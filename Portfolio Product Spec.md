@@ -381,9 +381,9 @@ Asset checklist:
 - Job detail/application path.
 - Mobile typography and navigation.
 
-### 10.8 Optional private case study: RAVpro
+### 10.8 Optional private case study: Healthcare AI SaaS Platform for Skilled Nursing Facilities
 
-RAVpro may be Jay's strongest evidence of current product ownership, AI workflow design, healthcare domain learning, design-system leadership, and full-stack coordination. Add it only with company approval and sanitized data.
+This healthcare AI platform may be Jay's strongest evidence of current product ownership, AI workflow design, healthcare domain learning, design-system leadership, and full-stack coordination. Add it only with company approval and sanitized data.
 
 If approved, present it as a private or redacted case study. Focus on the referral-to-PDPM workflow, translating clinical/founder requirements into product behavior, resilient AI processing states, and the scalable frontend system. Never expose PHI, real patient data, private prompts, credentials, customer names, or security-sensitive architecture.
 
@@ -487,7 +487,7 @@ When `prefers-reduced-motion: reduce` is active:
 - TypeScript in strict mode.
 - Tailwind CSS v4 with CSS-first theme tokens.
 - shadcn/ui primitives installed into a shared UI package and adapted to the portfolio design system.
-- Turborepo with pnpm workspaces, mirroring the organizational approach used in RAVpro.
+- Turborepo with pnpm workspaces, mirroring the organizational approach used in the healthcare AI platform.
 - Motion for React for component and layout animation; use platform or React view transitions only where behavior is stable and progressively enhanced.
 - MDX for authored case studies.
 - Zod for frontmatter/content validation.
@@ -687,7 +687,7 @@ These are content blockers, not reasons to delay the foundation:
 1. What exact role, dates, and personal contributions are publishable for each project?
 2. Which outcomes have credible metrics or third-party evidence?
 3. Which screenshots, recordings, diagrams, and source excerpts can be made public?
-4. Is RAVpro approved as a sanitized private case study?
+4. Is the healthcare AI platform approved as a sanitized private case study?
 5. What email, LinkedIn, GitHub, résumé, and preferred job title should appear at launch?
 6. Should availability say remote Philippines, Singapore/Asia time zones, Australia-targeted roles, or a broader formulation?
 

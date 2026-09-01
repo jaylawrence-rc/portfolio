@@ -13,7 +13,7 @@ export const profile = {
 
 export const experience = [
   {
-    company: "RAVPRO AI",
+    company: "Healthcare AI SaaS Platform for Skilled Nursing Facilities",
     role: "Full-Stack Engineer & Team Lead",
     period: "Sep 2025 — Present",
     location: "Startup company",

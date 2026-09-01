@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p>Good context includes the files that define the system, not an enormous dump of everything. Product specifications, design tokens, component APIs, nearby tests, and repository instructions are usually more valuable than thousands of unrelated lines.</p>
 
           <h3>2. Turn ambiguity into a bounded plan</h3>
-          <p>For ambiguous work, I ask the model to separate facts, assumptions, risks, and decisions. This is especially helpful when translating domain-heavy requirements into product behavior. At RAVPRO, for example, clinical workflows require more than a technically valid interface; terminology, correction paths, long-running AI states, and compliance boundaries all shape the implementation.</p>
+          <p>For ambiguous work, I ask the model to separate facts, assumptions, risks, and decisions. This is especially helpful when translating domain-heavy requirements into product behavior. On a healthcare AI SaaS platform for skilled nursing facilities, for example, clinical workflows require more than a technically valid interface; terminology, correction paths, long-running AI states, and compliance boundaries all shape the implementation.</p>
           <p>The plan should be small enough to verify. If it contains multiple unrelated changes, I split it. A narrow loop makes both the AI output and my review more reliable.</p>
 
           <h3>3. Delegate mechanics, keep judgment</h3>
