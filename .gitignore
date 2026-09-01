@@ -1,0 +1,21 @@
+# Dependencies and package-manager cache
+node_modules/
+.pnpm-store/
+
+# Next.js build output
+.next/
+out/
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# Deployment and tooling state
+.vercel/
+*.tsbuildinfo
+
+# Logs and operating-system files
+*.log
+.DS_Store
+
