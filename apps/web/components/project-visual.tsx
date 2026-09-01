@@ -1,6 +1,8 @@
 import type { Project } from "@/lib/projects";
 
-export function ProjectVisual({ project, compact = false }: { project: Project; compact?: boolean }) {
+type VisualProject = Pick<Project, "title" | "industry" | "accent">;
+
+export function ProjectVisual({ project, compact = false }: { project: VisualProject; compact?: boolean }) {
   return (
     <div className={`project-visual ${compact ? "compact" : ""}`} style={{ "--project-accent": project.accent } as React.CSSProperties}>
       <div className="visual-toolbar"><i /><i /><i /><span>{project.title.toLowerCase().replace(".ai", "")}.product</span></div>

@@ -12,6 +12,7 @@ export type Project = {
   industry: string;
   accent: string;
   liveUrl?: string;
+  allowsEmbedding?: boolean;
   proof?: { label: string; href: string; detail: string };
   challenge: string;
   contribution: string;
@@ -47,7 +48,7 @@ export const projects: Project[] = [
     summary: "A connected AI recruitment workflow with humans kept in control.",
     outcome: "Search, interview, assessment, and learning experiences designed as one suite.",
     role: "Full-Stack Engineer · Contract", period: "Nov 2023 — Sep 2026", status: "Live", featured: true,
-    disciplines: ["AI workflows", "Product engineering", "Design systems"], industry: "Recruitment", accent: "#fa715f", liveUrl: "https://xoots.ai/",
+    disciplines: ["AI workflows", "Product engineering", "Design systems"], industry: "Recruitment", accent: "#fa715f", liveUrl: "https://xoots.ai/", allowsEmbedding: false,
     challenge: "AI hiring tools can fragment the workflow and obscure how a recommendation was reached.",
     contribution: "I led end-to-end frontend development across Interview-X, Talent-X, Academy-X, and Search-X, shaping durable interaction patterns for AI output and review.",
     result: "Captivate Chat used the shipped platform to identify and successfully hire top talent, while clients gained a focused way to search for top-tier candidates.",

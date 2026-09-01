@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { CommandMenu } from "./command-menu";
 import { LivePresence } from "./live-presence";
+import { SoundToggle } from "./sound-toggle";
 import { usePresenceCount } from "./use-presence";
 
 export function Header() {
@@ -35,6 +36,7 @@ export function Header() {
         <div className="header-actions">
           {presenceCount !== null ? <LivePresence count={presenceCount} /> : null}
           <button className="command-trigger" onClick={() => setCommand(true)} aria-label="Open command menu"><Search size={15}/><span>⌘K</span></button>
+          <SoundToggle />
           <ThemeToggle />
           <Link className="button small desktop-talk" href="/contact">Let’s talk</Link>
           <span className="mobile-current">{current}</span>

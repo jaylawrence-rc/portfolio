@@ -126,8 +126,10 @@ Use semantic tokens and OKLCH. Project accents are restrained and must pass cont
 --subtle: oklch(0.52 0.010 260);
 --border: oklch(0.28 0.010 260);
 --border-strong: oklch(0.38 0.012 260);
---accent: oklch(0.72 0.16 255);
---accent-soft: oklch(0.28 0.07 255 / 0.45);
+--accent: #cfff04;
+--accent-bright: #cfff04;
+--accent-ink: oklch(0.16 0.008 260);
+--accent-soft: color-mix(in oklch, var(--accent-bright) 12%, var(--surface-1));
 --danger: oklch(0.68 0.19 25);
 ```
 
@@ -142,15 +144,17 @@ Use semantic tokens and OKLCH. Project accents are restrained and must pass cont
 --subtle: oklch(0.58 0.010 260);
 --border: oklch(0.90 0.006 260);
 --border-strong: oklch(0.80 0.008 260);
---accent: oklch(0.56 0.19 255);
---accent-soft: oklch(0.93 0.05 255);
+--accent: oklch(0.47 0.15 128);
+--accent-bright: #cfff04;
+--accent-ink: oklch(0.16 0.008 260);
+--accent-soft: color-mix(in oklch, var(--accent-bright) 18%, var(--surface-1));
 --danger: oklch(0.56 0.20 25);
 ```
 
 ### Color rules
 
 - Default surfaces are neutral.
-- Use the global accent for links, focus, and active state—not for large text fields or decorative gradients.
+- Use `#CFFF04` for primary actions, proof highlights, and active details with dark ink; use the darker light-theme accent for accessible text and focus treatment.
 - A project may define one accent and one soft surface. Apply them to small identifiers, media backdrops, diagrams, and transition moments.
 - Do not let project themes recolor global navigation.
 - Gradients are allowed only when they represent lighting, depth, or media framing. Never use a cyan-purple-pink gradient as generic excitement.

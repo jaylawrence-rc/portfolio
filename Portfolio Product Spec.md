@@ -136,7 +136,7 @@ Content order:
 2. Headline.
 3. Supporting copy.
 4. Two actions: **Explore selected work** and **View résumé**.
-5. A compact proof strip: current focus, location/time-zone, and primary disciplines.
+5. A compact proof strip: 4+ years of experience, 7 production apps shipped, and 5,000+ users across products.
 
 Do not use a large portrait, decorative 3D object, animated gradient blob, or oversized dashboard mockup in the hero. The writing and typography are the hero.
 
