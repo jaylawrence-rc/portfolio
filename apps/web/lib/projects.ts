@@ -50,7 +50,7 @@ export const projects: Project[] = [
     disciplines: ["AI workflows", "Product engineering", "Design systems"], industry: "Recruitment", accent: "#fa715f", liveUrl: "https://xoots.ai/",
     challenge: "AI hiring tools can fragment the workflow and obscure how a recommendation was reached.",
     contribution: "I led end-to-end frontend development across Interview-X, Talent-X, Academy-X, and Search-X, shaping durable interaction patterns for AI output and review.",
-    result: "The connected platform shipped for internal use and supported the successful hiring of multiple key talents.",
+    result: "Captivate Chat used the shipped platform to identify and successfully hire top talent, while clients gained a focused way to search for top-tier candidates.",
     context: "The suite supports recruiters and candidates across discovery, interviewing, assessment, and learning. The interface has to communicate progress and confidence without presenting AI output as unquestionable fact.",
     constraints: ["Long-running and failure-prone AI tasks", "Candidate trust and recruiter oversight", "Multiple products sharing language and state patterns"],
     decisions: [
