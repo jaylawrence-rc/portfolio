@@ -135,6 +135,19 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
     });
   }
 
+  function selectProject(index: number) {
+    if (index === selection.index) return;
+
+    playInteractionTick();
+    setLiveProjectSlug(null);
+    setLiveStatus("idle");
+    setSelection((current) => ({
+      index,
+      direction: index > current.index ? "next" : "previous",
+      revision: current.revision + 1,
+    }));
+  }
+
   function startLivePreview() {
     if (!activeProject?.liveUrl || activeProject.allowsEmbedding === false) return;
     playInteractionTick();
@@ -155,13 +168,29 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
   return (
     <MotionConfig reducedMotion="user">
       <section className="section shell portfolio-bento" aria-labelledby="portfolio-at-a-glance">
-        <div className="section-heading bento-heading">
-          <div>
-            <p className="eyebrow">Portfolio at a glance</p>
-            <h2 id="portfolio-at-a-glance">The useful version of the whole story.</h2>
+        <motion.div
+          className="bento-heading"
+          initial={{ opacity: 0, transform: shouldReduceMotion ? "none" : "translateY(14px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{
+            opacity: { duration: 0.28, ease: "easeOut" },
+            transform: { type: "spring", duration: 0.58, bounce: 0 },
+          }}
+        >
+          <div className="bento-intro-copy">
+            <p className="bento-availability"><i aria-hidden="true" /> Available for selected product engineering roles</p>
+            <p className="eyebrow">Product engineer · Philippines / GMT+8</p>
+            <h1 id="portfolio-at-a-glance">I build software that solves <em>real business problems.</em></h1>
           </div>
-          <p>Browse the work, scan the experience, or follow the part that matters to you.</p>
-        </div>
+          <div className="bento-intro-aside">
+            <p>Frontend-focused full-stack engineer turning complex workflows into clear, scalable products for clients and teams in the US, Germany, and London.</p>
+            <dl className="bento-intro-proof">
+              <div><dt>Experience</dt><dd><strong>4+</strong><span>years</span></dd></div>
+              <div><dt>Production</dt><dd><strong>7</strong><span>apps shipped</span></dd></div>
+              <div><dt>Reach</dt><dd><strong>5,000+</strong><span>users</span></dd></div>
+            </dl>
+          </div>
+        </motion.div>
 
         <motion.div
           className="bento-grid"
@@ -312,6 +341,31 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
               </div>
               <div className="bento-macbook-base" aria-hidden="true"><i /></div>
             </div>
+
+            <nav className="bento-project-pagination" aria-label="Choose a project directly">
+              {projects.map((project, index) => {
+                const isActive = index === selection.index;
+                return (
+                  <button
+                    type="button"
+                    key={project.slug}
+                    aria-label={`Show ${project.title}`}
+                    aria-current={isActive ? "true" : undefined}
+                    onClick={() => selectProject(index)}
+                    onPointerEnter={preloadInteractionTick}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {isActive ? (
+                      <motion.i
+                        layoutId={shouldReduceMotion ? undefined : "bento-active-project"}
+                        transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                  </button>
+                );
+              })}
+            </nav>
 
             <footer className="bento-project-footer">
               <div aria-live="polite">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { projects } from "@/lib/projects";
 import { ProjectRow } from "@/components/project-row";
 import { PortfolioBento } from "@/components/portfolio-bento";
@@ -7,13 +7,6 @@ import { experience, skillGroups } from "@/lib/profile";
 
 export default function Home() {
   return <>
-    <section className="hero shell">
-      <p className="status"><i/> Available for selected product engineering roles <button className="location-reveal" type="button" aria-label="Remote from the Philippines. Hover or focus to reveal the Philippine flag."><span className="location-copy">· remote from the Philippines</span><span className="location-flag" aria-hidden="true">🇵🇭</span></button></p>
-      <h1>I build software that solves <em>real business problems.</em></h1>
-      <p className="hero-lead">Product engineer and frontend-focused full-stack developer turning complex workflows into clear, scalable products—across AI, healthcare, music data, recruitment, and B2B software—for clients and teams in the US, Germany, and London.</p>
-      <div className="hero-actions"><Link className="button explore-work-button" href="#selected-work">Explore selected work <span className="explore-arrow" aria-hidden="true"><ArrowDown size={16}/><ArrowDown size={16}/></span></Link><Link className="text-button" href="/resume">View résumé <ArrowRight size={16}/></Link></div>
-      <dl className="proof-strip"><div><dt>Experience</dt><dd><strong>4+</strong><span>years building products</span></dd></div><div><dt>Production</dt><dd><strong>7</strong><span>apps shipped</span></dd></div><div><dt>Product reach</dt><dd><strong>5,000+</strong><span>users across products</span></dd></div></dl>
-    </section>
     <PortfolioBento
       projects={projects.map(({ slug, title, company, summary, industry, accent, liveUrl, allowsEmbedding }) => ({ slug, title, company, summary, industry, accent, liveUrl, allowsEmbedding }))}
       experience={experience}
