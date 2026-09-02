@@ -110,6 +110,17 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
   const shouldReduceMotion = Boolean(useReducedMotion());
   const activeProject = projects[selection.index];
 
+  function syncLivePreview(project?: BentoProject) {
+    if (project?.liveUrl && project.allowsEmbedding !== false) {
+      setLiveProjectSlug(project.slug);
+      setLiveStatus("loading");
+      return;
+    }
+
+    setLiveProjectSlug(null);
+    setLiveStatus("idle");
+  }
+
   useEffect(() => {
     if (activeProject?.liveUrl && activeProject.allowsEmbedding !== false) {
       setLiveProjectSlug(activeProject.slug);
@@ -123,10 +134,10 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
 
   function moveProject(direction: ProjectSelection["direction"]) {
     playInteractionTick();
-    setLiveProjectSlug(null);
-    setLiveStatus("idle");
+    const step = direction === "next" ? 1 : -1;
+    const nextIndex = (selection.index + step + projects.length) % projects.length;
+    syncLivePreview(projects[nextIndex]);
     setSelection((current) => {
-      const step = direction === "next" ? 1 : -1;
       return {
         index: (current.index + step + projects.length) % projects.length,
         direction,
@@ -139,8 +150,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
     if (index === selection.index) return;
 
     playInteractionTick();
-    setLiveProjectSlug(null);
-    setLiveStatus("idle");
+    syncLivePreview(projects[index]);
     setSelection((current) => ({
       index,
       direction: index > current.index ? "next" : "previous",
@@ -226,27 +236,19 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
                 </p>
               </div>
               <div className="bento-project-header-actions">
-                <AnimatePresence initial={false}>
-                  {isLivePreview && activeProject.liveUrl ? (
-                    <motion.div
-                      className="bento-live-toolbar"
-                      key={`toolbar-${activeProject.slug}`}
-                      layoutId={shouldReduceMotion ? undefined : `live-control-${activeProject.slug}`}
-                      style={{ borderRadius: 8 }}
-                      transition={{ type: "spring", duration: 0.42, bounce: 0 }}
-                    >
-                      <span><i aria-hidden="true" /> Live site · scroll inside</span>
-                      <span>
-                        <a href={activeProject.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${activeProject.title} in a new tab`}>
-                          <ExternalLink size={13} aria-hidden="true" />
-                        </a>
-                        <button type="button" onClick={stopLivePreview} aria-label="Close live site preview">
-                          <X size={14} aria-hidden="true" />
-                        </button>
-                      </span>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
+                {isLivePreview && activeProject.liveUrl ? (
+                  <div className="bento-live-toolbar">
+                    <span><i aria-hidden="true" /> Live site · scroll inside</span>
+                    <span>
+                      <a href={activeProject.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${activeProject.title} in a new tab`}>
+                        <ExternalLink size={13} aria-hidden="true" />
+                      </a>
+                      <button type="button" onClick={stopLivePreview} aria-label="Close live site preview">
+                        <X size={14} aria-hidden="true" />
+                      </button>
+                    </span>
+                  </div>
+                ) : null}
                 <div className="bento-project-controls" aria-label="Choose a project">
                   <button
                     type="button"
