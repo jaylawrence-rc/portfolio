@@ -103,7 +103,7 @@ const projectTransition = {
 };
 
 export function PortfolioBento({ projects, experience, skillGroups }: PortfolioBentoProps) {
-  const firstEmbeddableProject = projects[0]?.liveUrl && projects[0].allowsEmbedding !== false ? projects[0] : null;
+  const firstEmbeddableProject = projects[0]?.liveUrl && projects[0].allowsEmbedding === true ? projects[0] : null;
   const [selection, setSelection] = useState<ProjectSelection>({ index: 0, direction: "next", revision: 0 });
   const [liveProjectSlug, setLiveProjectSlug] = useState<string | null>(() => firstEmbeddableProject?.slug ?? null);
   const [liveStatus, setLiveStatus] = useState<"idle" | "loading" | "ready" | "failed">(() => firstEmbeddableProject ? "loading" : "idle");
@@ -111,7 +111,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
   const activeProject = projects[selection.index];
 
   function syncLivePreview(project?: BentoProject) {
-    if (project?.liveUrl && project.allowsEmbedding !== false) {
+    if (project?.liveUrl && project.allowsEmbedding === true) {
       setLiveProjectSlug(project.slug);
       setLiveStatus("loading");
       return;
@@ -122,7 +122,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
   }
 
   useEffect(() => {
-    if (activeProject?.liveUrl && activeProject.allowsEmbedding !== false) {
+    if (activeProject?.liveUrl && activeProject.allowsEmbedding === true) {
       setLiveProjectSlug(activeProject.slug);
       setLiveStatus("loading");
       return;
@@ -159,7 +159,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
   }
 
   function startLivePreview() {
-    if (!activeProject?.liveUrl || activeProject.allowsEmbedding === false) return;
+    if (!activeProject?.liveUrl || activeProject.allowsEmbedding !== true) return;
     playInteractionTick();
     setLiveProjectSlug(activeProject.slug);
     setLiveStatus("loading");
@@ -317,7 +317,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
                       ) : null}
                     </AnimatePresence>
                     <AnimatePresence initial={false}>
-                  {activeProject.liveUrl && activeProject.allowsEmbedding !== false && !isLivePreview ? (
+                  {activeProject.liveUrl && activeProject.allowsEmbedding === true && !isLivePreview ? (
                     <motion.button
                       className="bento-live-launch"
                       key={`launch-${activeProject.slug}`}
@@ -331,7 +331,7 @@ export function PortfolioBento({ projects, experience, skillGroups }: PortfolioB
                       <Globe2 size={14} aria-hidden="true" /> Explore live site
                     </motion.button>
                   ) : null}
-                  {activeProject.liveUrl && activeProject.allowsEmbedding === false && !isLivePreview ? (
+                  {activeProject.liveUrl && activeProject.allowsEmbedding !== true && !isLivePreview ? (
                     <motion.a className="bento-live-launch" key={`external-${activeProject.slug}`} href={activeProject.liveUrl} target="_blank" rel="noreferrer">
                       <ExternalLink size={14} aria-hidden="true" /> Open live site
                     </motion.a>

@@ -29,10 +29,13 @@ export const experience = [
     role: "Product Engineer",
     period: "Jun 2024 — Dec 2025",
     location: "New York City, USA · Remote",
-    summary: "Created a public acquisition surface that helped Chartmetric attract new clients and turn product interest into paid subscriptions.",
+    summary: "Expanded Chartmetric’s analytics product and global reach while strengthening the frontend system behind faster feature delivery.",
     bullets: [
+      "Built core features for artist and track analytics pages used daily by music industry professionals across labels and management firms, including playlist overlap analysis, sortable and searchable data tables, and TikTok influencer ranking views.",
+      "Improved frontend developer experience by extracting reusable components and table primitives, refactoring legacy UI toward the design system, and upgrading core dependencies including Tailwind CSS—reducing duplication and speeding up feature delivery across the team.",
+      "Developed public-facing artist and track pages and led internationalization across 7+ languages, expanding platform accessibility to global markets.",
+      "Shipped approximately 2,000 commits over 17 months as a top-four contributor, owning features end to end from implementation through QA sweeps and design-system refactors.",
       "Built Music Stats, a public music-tech platform that made Chartmetric’s data capabilities immediately useful and encouraged users to explore the paid product.",
-      "Strengthened the core platform by shipping new features, resolving critical bugs, and improving frontend performance and usability.",
     ],
   },
   {
@@ -42,8 +45,8 @@ export const experience = [
     location: "Remote",
     summary: "Enabled Captivate Chat to hire top talent internally while giving clients a focused way to find top-tier candidates.",
     bullets: [
-      "Connected Interview-X, Talent-X, Academy-X, and Search-X so clients could search, assess, and identify top-tier talent in one recruitment workflow.",
-      "Led end-to-end frontend delivery through launch; Captivate Chat then used Xoots internally to identify and successfully hire top talent.",
+      "Built the frontend from scratch across Interview-X, Talent-X, Academy-X, and Search-X, using SSR or TanStack Query according to each workflow’s rendering and server-state needs.",
+      "Unified search, interview, assessment, and learning workflows in a platform that supported 100+ hires across client organizations and helped Captivate Chat hire top talent internally.",
     ],
   },
   {
