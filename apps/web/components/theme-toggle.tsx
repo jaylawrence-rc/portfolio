@@ -1,16 +1,30 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const THEME_CHANGE_EVENT = "portfolio:theme-change";
+const getTheme = () => document.documentElement.dataset.theme === "dark";
+
+function subscribe(onChange: () => void) {
+  window.addEventListener(THEME_CHANGE_EVENT, onChange);
+  return () => window.removeEventListener(THEME_CHANGE_EVENT, onChange);
+}
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-  useEffect(() => setDark(document.documentElement.dataset.theme === "dark"), []);
+  const dark = useSyncExternalStore(subscribe, getTheme, () => false);
+  const label = `Switch to ${dark ? "light" : "dark"} theme`;
+
   function toggle() {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.dataset.theme = next ? "dark" : "light";
-    localStorage.setItem("theme", next ? "dark" : "light");
+    const theme = dark ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    try {
+      window.localStorage.setItem("theme", theme);
+    } catch {
+      // Theme switching also works in storage-restricted browsers.
+    }
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   }
-  return <button className="icon-button" onClick={toggle} aria-label={`Switch to ${dark ? "light" : "dark"} theme`}>{dark ? <Sun size={17}/> : <Moon size={17}/>}</button>;
+
+  return <button type="button" className="folio-nav-control" onClick={toggle} aria-label={label} title={label}>{dark ? <Sun size={17} aria-hidden="true" /> : <Moon size={17} aria-hidden="true" />}</button>;
 }

@@ -1,5 +1,6 @@
 import { Download } from "lucide-react";
 import { education, experience, profile, skillGroups } from "@/lib/profile";
+import { ResumeSkillJoke } from "@/components/resume-skill-joke";
 
 export const metadata = {
   title: "Résumé",
@@ -21,8 +22,8 @@ export default function Resume() {
       <div className="resume-layout">
         <aside>
           <h3>Contact</h3>
-          <p><a href={`mailto:${profile.email}`}>{profile.email}</a><br/><a href={`tel:${profile.phone}`}>{profile.phoneDisplay}</a><br/>{profile.location}</p>
-          {skillGroups.map((group) => <div key={group.label}><h3>{group.label}</h3><p>{group.skills.join(" · ")}</p></div>)}
+          <p><a href={`mailto:${profile.email}`}>{profile.email}</a><br/>{profile.location}</p>
+          {skillGroups.map((group) => <div key={group.label}>{group.label === "Product & frontend" ? <div className="resume-skill-heading"><h3>{group.label}</h3><ResumeSkillJoke /></div> : <h3>{group.label}</h3>}<p>{group.skills.join(" · ")}</p></div>)}
           <h3>Profiles</h3>
           <p><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a><br/><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></p>
         </aside>
@@ -31,7 +32,7 @@ export default function Resume() {
           {experience.map((role) => (
             <section key={`${role.company}-${role.period}`}>
               <p>{role.period}</p>
-              <div><h2>{role.company}</h2><h3>{role.role} · {role.location}</h3><p>{role.summary}</p><ul>{role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
+              <div><h2>{role.company}</h2><h3>{role.role}{role.location && ` · ${role.location}`}</h3><p>{role.summary}</p><ul>{role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
             </section>
           ))}
         </div>

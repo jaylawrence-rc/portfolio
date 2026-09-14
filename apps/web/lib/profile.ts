@@ -3,8 +3,6 @@ export const profile = {
   title: "Product Engineer / Frontend-Leaning Full-Stack Engineer",
   location: "Cainta, Rizal, Philippines",
   timezone: "GMT+8",
-  phone: "+639774539951",
-  phoneDisplay: "+63 977 453 9951",
   email: "jaydimaano@proton.me",
   github: "https://github.com/JayLawrence23",
   linkedin: "https://linkedin.com/in/jaylawrencee",
@@ -63,12 +61,24 @@ export const experience = [
   {
     company: "T.E.A.M DAO",
     role: "Full-Stack Web3 Engineer · Part-time",
-    period: "Aug 2024 — Nov 2024",
+    period: "Aug 2023 — Nov 2023",
     location: "Remote",
     summary: "Turned live market data into an interactive Web3 game experience delivered directly through Telegram.",
     bullets: [
       "Built and shipped the REKT Telegram bot, giving players immediate access to live coin-price gameplay.",
       "Used Socket.IO to keep chart data current inside the bot and make the experience responsive to market movement.",
+    ],
+  },
+  {
+    company: "Reclaim Healthcare Administrative Services",
+    role: "Software Engineer",
+    period: "Nov 2022 — Jul 2023",
+    location: null,
+    summary: "Shipped two healthcare applications and simplified rate updates with an Excel upload workflow.",
+    bullets: [
+      "Led frontend development for two projects and deployed both in eight months. No AI agents!",
+      "Recreated the full functionality of the PDPM Calculator within a custom web application.",
+      "Replaced manual area-rate and wage-index adjustments with dynamic updates from CMS.gov Excel uploads.",
     ],
   },
 ] as const;
@@ -84,7 +94,7 @@ export const skillGroups = [
   },
   {
     label: "AI & infrastructure",
-    skills: ["LangChain", "OpenAI", "Anthropic", "Azure AI", "AWS", "Vercel", "Netlify", "S3", "RDS", "Turborepo"],
+    skills: ["OpenAI", "Anthropic", "Azure AI", "AWS", "Vercel", "Netlify", "S3", "RDS", "Turborepo"],
   },
 ] as const;
 

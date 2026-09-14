@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/profile";
 
 export function Footer() {
-  return <footer className="site-footer shell"><div><p className="eyebrow">Open to the right product team</p><h2>Building a product where engineering judgment matters? <Link href="/contact">Let’s talk.</Link></h2></div><div className="footer-bottom"><span>{profile.name} · {profile.location} / {profile.timezone}</span><nav><Link href="/blog">Blog</Link><a href={`mailto:${profile.email}`}>Email</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a><Link href="/resume">Résumé</Link></nav></div></footer>;
+  return (
+    <footer className="editorial-footer shell">
+      <div className="editorial-footer-top"><p className="editorial-label">The next chapter</p><p className="availability-note"><span aria-hidden="true" /> Open to selected product engineering roles</p></div>
+      <div className="editorial-footer-invitation"><h2>Let’s build<br />something useful.</h2><Link className="footer-contact-link" href="/contact" aria-label="Start a conversation"><ArrowUpRight aria-hidden="true" /></Link></div>
+      <div className="editorial-footer-contact"><a className="editorial-link" href={`mailto:${profile.email}`}>{profile.email} <ArrowUpRight size={17} aria-hidden="true" /></a><p>Good problems. Thoughtful teams. Software that makes a difference.</p></div>
+      <div className="editorial-footer-bottom"><span>© {new Date().getFullYear()} Jay Lawrence Dimaano</span><nav aria-label="Footer navigation"><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={13} aria-hidden="true" /></a><a href={profile.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={13} aria-hidden="true" /></a><Link href="/resume">Résumé <ArrowUpRight size={13} aria-hidden="true" /></Link></nav><span>Philippines · GMT+8</span></div>
+    </footer>
+  );
 }

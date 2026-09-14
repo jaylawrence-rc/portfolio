@@ -1,29 +1,139 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import type { CSSProperties } from "react";
 import { ViewTransition } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { getProject, projects } from "@/lib/projects";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { CaseNavigation } from "@/components/case-navigation";
 import { ProjectFeatures } from "@/components/project-features";
 import { ProjectVisual } from "@/components/project-visual";
+import { getProject, projects } from "@/lib/projects";
 
-export function generateStaticParams() { return projects.map(p => ({ slug: p.slug })); }
-export async function generateMetadata({ params }: { params: Promise<{slug:string}> }) { const p=getProject((await params).slug); return p ? {title:p.title,description:p.summary}:{}; }
-export default async function ProjectPage({ params }: { params: Promise<{slug:string}> }) {
-  const project = getProject((await params).slug); if(!project) notFound(); const index=projects.indexOf(project); const next=projects[(index+1)%projects.length];
-  return <article className="case-study" style={{"--project-accent":project.accent} as React.CSSProperties}>
-    <header className="case-hero shell"><Link className="back-link" href="/work"><ArrowLeft size={15}/> All work</Link><p className="eyebrow">{project.industry} · {String(index+1).padStart(2,"0")}</p><h1>{project.title}</h1><p className="case-outcome">{project.outcome}</p><dl className="case-meta"><div><dt>Role</dt><dd>{project.role}</dd></div><div><dt>Company</dt><dd>{project.company}</dd></div><div><dt>Period</dt><dd>{project.period}</dd></div><div><dt>Status</dt><dd>{project.status}</dd></div></dl>{project.liveUrl&&<a className="text-button" target="_blank" rel="noreferrer" href={project.liveUrl}>Visit public product <ArrowUpRight size={16}/></a>}</header>
-    <ViewTransition name={`project-visual-${project.slug}`} share="project-expand" default="none">
-      <figure className="case-media media-rail"><ProjectVisual project={project}/><figcaption><span>Redacted / reconstructed</span> A system-led reconstruction used until approved product media is supplied.</figcaption></figure>
-    </ViewTransition>
-    <section className="executive media-rail"><div><span>Challenge</span><p>{project.challenge}</p></div><div><span>Contribution</span><p>{project.contribution}</p></div><div><span>Result</span><p>{project.result}</p></div></section>
-    <div className="article-body reading-rail">
-      <section><p className="eyebrow">Context</p><h2>The product in one clear frame.</h2><p>{project.context}</p></section>
-      <section><p className="eyebrow">Constraints</p><h2>The boundaries shaped the work.</h2><ul>{project.constraints.map(x=><li key={x}>{x}</li>)}</ul></section>
-      <section><p className="eyebrow">My role</p><h2>Ownership stated without ambiguity.</h2><p>{project.contribution}</p><aside><span>{project.proof ? "Public attribution" : "Personal contribution"}</span><p>{project.proof?.detail ?? "This describes my current public account of the work. Exact dates, team boundaries, and private implementation details remain draft until confirmed."}</p>{project.proof&&<a className="evidence-link" href={project.proof.href} target="_blank" rel="noreferrer">View {project.proof.label}<ArrowUpRight size={14}/></a>}</aside></section>
-    </div>
-    <ProjectFeatures project={project}/>
-    <section className="walkthrough media-rail"><div><p className="eyebrow">Experience walkthrough</p><h2>From intent to a trustworthy result.</h2></div><div className="flow"><div><span>01</span><strong>Express intent</strong><p>A focused entry point asks for only what the system needs.</p></div><i>→</i><div><span>02</span><strong>Understand state</strong><p>Progress, uncertainty, and recovery remain legible.</p></div><i>→</i><div><span>03</span><strong>Act on evidence</strong><p>The result leads to a clear next decision.</p></div></div></section>
-    <div className="article-body reading-rail"><section><p className="eyebrow">System underneath</p><h2>Shared structure, product-specific evidence.</h2><p>A small set of semantic states and content contracts creates consistency without forcing every workflow into the same visual template. This architecture is reconstructed from the public product story and will be replaced with approved technical evidence.</p></section><section><p className="eyebrow">Outcome</p><h2>Shipped capability over invented metrics.</h2><p>{project.result}</p><aside><span>Qualitative result</span><p>No unverified traffic, conversion, revenue, or performance number is published here.</p></aside></section><section><p className="eyebrow">What I learned</p><h2>The next version starts with the lesson.</h2><p>{project.learning}</p></section></div>
-    <Link href={`/work/${next.slug}`} className="next-project shell"><span>Next project · {String((index+1)%projects.length+1).padStart(2,"0")}</span><strong>{next.title}</strong><p>{next.summary}</p><i>↗</i></Link>
-  </article>;
+type ProjectPageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }: ProjectPageProps) {
+  const project = getProject((await params).slug);
+  return project ? { title: project.title, description: project.summary } : {};
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project = getProject((await params).slug);
+  if (!project) notFound();
+
+  const index = projects.indexOf(project);
+  const next = projects[(index + 1) % projects.length];
+  const hasUnconfirmedScope = /to confirm/i.test(`${project.role} ${project.period}`);
+
+  return (
+    <article className="case-editorial" style={{ "--project-accent": project.accent } as CSSProperties}>
+      <header className="case-editorial-header shell">
+        <Link className="case-editorial-back" href="/work">
+          <ArrowLeft size={16} aria-hidden="true" /> All work
+        </Link>
+        <div className="case-editorial-opening">
+          <div className="case-editorial-title">
+            <p className="case-editorial-label">{project.industry} <span aria-hidden="true">/</span> {String(index + 1).padStart(2, "0")}</p>
+            <h1>{project.title}</h1>
+            <p className="case-editorial-outcome">{project.outcome}</p>
+          </div>
+          <div className="case-editorial-details">
+            <dl className="case-editorial-meta">
+              <div><dt>My role</dt><dd>{project.role}</dd></div>
+              <div><dt>With</dt><dd>{project.company}</dd></div>
+              <div><dt>Period</dt><dd>{project.period}</dd></div>
+            </dl>
+            {project.liveUrl && (
+              <a className="case-editorial-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+                Visit live site <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        </div>
+      </header>
+
+      <figure className="case-editorial-media media-rail">
+        <ViewTransition name={`project-visual-${project.slug}`} share="project-expand" default="none">
+          <div><ProjectVisual project={project} eager /></div>
+        </ViewTransition>
+        <figcaption>{project.image?.caption ?? `Project overview · ${project.title}`}</figcaption>
+      </figure>
+
+      <div className="case-editorial-summary shell">
+        <div className="case-editorial-executive">
+          <div>
+            <h2 className="case-editorial-label">My contribution</h2>
+            <p>{project.contribution}</p>
+          </div>
+          <div>
+            <h2 className="case-editorial-label">Shipped result</h2>
+            <p>{project.result}</p>
+          </div>
+        </div>
+        {project.proof ? (
+          <aside className="case-editorial-attribution">
+            <p>{project.proof.detail}</p>
+            <a className="case-editorial-link" href={project.proof.href} target="_blank" rel="noreferrer">
+              {project.proof.label} <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          </aside>
+        ) : hasUnconfirmedScope ? (
+          <p className="case-editorial-scope">Scope note: exact dates and contribution boundaries are still being confirmed.</p>
+        ) : null}
+      </div>
+
+      <div className="case-editorial-reading media-rail">
+        <CaseNavigation key={project.slug} />
+        <div className="case-editorial-chapters">
+          <section id="context" className="case-editorial-section" aria-labelledby="context-heading">
+            <p className="case-editorial-label">01 <span aria-hidden="true">/</span> Context</p>
+            <h2 id="context-heading">{project.challenge}</h2>
+            <p className="case-editorial-prose">{project.context}</p>
+            <div className="case-editorial-constraints">
+              <h3>Working within</h3>
+              <ul>{project.constraints.map((constraint) => <li key={constraint}>{constraint}</li>)}</ul>
+            </div>
+          </section>
+          <section id="decisions" className="case-editorial-section" aria-labelledby="decisions-heading">
+            <h2 id="decisions-heading" className="case-editorial-label">02 <span aria-hidden="true">/</span> Product decisions</h2>
+            <ProjectFeatures project={project} />
+            {project.hoverPage ? <a className="editorial-link" href={project.hoverPage.url} target="_blank" rel="noreferrer">Explore {project.hoverPage.label} <ArrowUpRight size={16} aria-hidden="true" /></a> : null}
+            {project.detailImage ? (
+              <figure className="case-editorial-detail">
+                <Image
+                  src={project.detailImage.src}
+                  width={project.detailImage.width}
+                  height={project.detailImage.height}
+                  alt={project.detailImage.alt}
+                  sizes="(max-width: 780px) 100vw, 760px"
+                />
+                <figcaption>
+                  <strong>{project.detailImage.label}</strong>
+                  <p>{project.detailImage.caption}</p>
+                </figcaption>
+              </figure>
+            ) : null}
+          </section>
+          <section id="reflection" className="case-editorial-section case-editorial-reflection" aria-labelledby="reflection-heading">
+            <p className="case-editorial-label">03 <span aria-hidden="true">/</span> Reflection</p>
+            <h2 id="reflection-heading">{project.learning}</h2>
+          </section>
+        </div>
+      </div>
+      <div className="case-editorial-continuation shell">
+        <p className="case-editorial-label">Keep exploring</p>
+        <Link href={`/work/${next.slug}`} className="case-editorial-next">
+          <div>
+            <span className="case-editorial-next-caption">Next project <span aria-hidden="true">/</span> {next.industry}</span>
+            <h2>{next.title}</h2>
+            <p>{next.summary}</p>
+          </div>
+          <span className="case-editorial-next-arrow"><ArrowRight size={32} strokeWidth={1.5} aria-hidden="true" /></span>
+        </Link>
+      </div>
+    </article>
+  );
 }
