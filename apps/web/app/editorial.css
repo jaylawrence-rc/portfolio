@@ -33,6 +33,19 @@ main section[id] { scroll-margin-top: 104px; }
 #selected-work { scroll-margin-top: 18px; }
 .editorial-label { font: 400 12px/1.5 "Geist Mono", monospace; letter-spacing: .015em; color: var(--muted); margin: 0; }
 .editorial-label > span { color: var(--subtle); }
+.contribution-company-link {
+  display: inline-block;
+  padding: 0 .3em;
+  border-radius: 2px;
+  background: var(--accent-bright);
+  color: var(--accent-ink);
+  font-weight: 550;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .15em;
+}
+.contribution-company-link:hover { text-decoration-thickness: 2px; }
 .availability-note { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13px; line-height: 1.5; margin: 0; }
 .availability-note > span { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--accent); }
 .editorial-link { min-height: 44px; display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; width: fit-content; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 6px; text-decoration-thickness: 1px; transition: color 180ms ease, text-decoration-color 180ms ease; }

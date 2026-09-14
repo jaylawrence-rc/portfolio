@@ -1,6 +1,8 @@
-import { Download } from "lucide-react";
 import { education, experience, profile, skillGroups } from "@/lib/profile";
+import { ActionLink, CompanyLink } from "@/components/editorial-links";
 import { ResumeSkillJoke } from "@/components/resume-skill-joke";
+import { ExperienceYears } from "@/components/experience-years";
+import { getProfessionalExperienceYears } from "@/lib/professional-experience";
 
 export const metadata = {
   title: "Résumé",
@@ -14,9 +16,9 @@ export default function Resume() {
         <div>
           <p className="eyebrow">Résumé · web edition</p>
           <h1>Product engineering with frontend depth.</h1>
-          <p>Four years of professional experience turning complex product requirements into scalable web applications, AI workflows, and maintainable frontend systems.</p>
+          <p><ExperienceYears initialYears={getProfessionalExperienceYears()} /> of professional experience turning complex product requirements into scalable web applications, AI workflows, and maintainable frontend systems.</p>
         </div>
-        <a className="button" href={profile.resumePath} download>Download PDF <Download size={16} /></a>
+        <ActionLink href={profile.resumePath} download>Download PDF</ActionLink>
       </header>
 
       <div className="resume-layout">
@@ -30,9 +32,9 @@ export default function Resume() {
 
         <div className="resume-roles">
           {experience.map((role) => (
-            <section key={`${role.company}-${role.period}`}>
+            <section key={`${role.company}-${role.period}`} id={role.company === "Chartmetric" ? "chartmetric" : undefined} tabIndex={role.company === "Chartmetric" ? -1 : undefined}>
               <p>{role.period}</p>
-              <div><h2>{role.company}</h2><h3>{role.role}{role.location && ` · ${role.location}`}</h3><p>{role.summary}</p><ul>{role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
+              <div><h2>{role.companyUrl ? <CompanyLink href={role.companyUrl}>{role.company}</CompanyLink> : role.company}</h2><h3>{role.role}{role.location && ` · ${role.location}`}</h3><p>{role.summary}</p><ul>{role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
             </section>
           ))}
         </div>

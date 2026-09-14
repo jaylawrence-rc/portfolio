@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/projects";
-import { experience } from "@/lib/profile";
+import { companyUrls, experience } from "@/lib/profile";
+import { CompanyLink } from "@/components/editorial-links";
 import { ProjectHoverLink } from "@/components/project-hover-link";
 import { ProjectHoverArrow, ProjectHoverMedia } from "@/components/project-hover-media";
 import { Reveal } from "@/components/reveal";
@@ -33,7 +34,7 @@ export default function Home() {
         </div>
         <div className="home-proof-line">
           <span>Based in the Philippines · Working globally</span>
-          <span>Previously building at <strong>Chartmetric</strong> & <strong>Xoots</strong></span>
+          <span>Previously building at <strong><CompanyLink href={companyUrls.chartmetric}>Chartmetric</CompanyLink></strong> & <strong>Xoots</strong></span>
         </div>
       </section>
 
@@ -57,7 +58,7 @@ export default function Home() {
             </ProjectHoverLink>
           </Reveal>
           <div className="featured-story-footer">
-            <div><span className="editorial-label">My contribution</span><p>A public product for Chartmetric, bringing four music tools into one clear experience.</p></div>
+            <div><span className="editorial-label">My contribution</span><p>A public product for <Link className="contribution-company-link" href="/resume#chartmetric" aria-label="View my Chartmetric experience on the résumé">Chartmetric</Link>, bringing four music tools into one clear experience.</p></div>
             <div className="featured-story-role"><span className="editorial-label">Role</span><p>Product Engineer</p></div>
             <Link className="editorial-link" href="/work/music-stats" transitionTypes={["project-expand"]}>Read the story <ArrowUpRight size={17} aria-hidden="true" /></Link>
           </div>
@@ -111,7 +112,7 @@ export default function Home() {
           </div>
           <details className="home-career">
             <summary><span>Experience, briefly</span><span>From frontend craft to product ownership <span className="disclosure-mark" aria-hidden="true">+</span></span></summary>
-            <div className="home-career-content">{experience.slice(0, 4).map(role => <div key={role.company}><span>{role.period}</span><strong>{role.company}</strong><span>{role.role}</span></div>)}<Link className="editorial-link" href="/resume">Read the full résumé <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+            <div className="home-career-content">{experience.slice(0, 4).map(role => <div key={role.company}><span>{role.period}</span><strong>{role.companyUrl ? <CompanyLink href={role.companyUrl}>{role.company}</CompanyLink> : role.company}</strong><span>{role.role}</span></div>)}<Link className="editorial-link" href="/resume">Read the full résumé <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
           </details>
         </div>
       </section>

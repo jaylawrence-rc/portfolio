@@ -5,13 +5,13 @@ let tickAudio: HTMLAudioElement | null = null;
 let mutedPreference: boolean | undefined;
 
 export function isInteractionSoundMuted() {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   if (mutedPreference !== undefined) return mutedPreference;
   try {
-    // Sound is an explicit opt-in for a new visitor.
-    mutedPreference = window.localStorage.getItem(SOUND_STORAGE_KEY) !== "false";
+    // Sound starts enabled unless the visitor has explicitly muted it.
+    mutedPreference = window.localStorage.getItem(SOUND_STORAGE_KEY) === "true";
   } catch {
-    mutedPreference = true;
+    mutedPreference = false;
   }
   return mutedPreference;
 }

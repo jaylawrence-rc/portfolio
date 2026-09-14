@@ -10,7 +10,7 @@ function subscribe(onChange: () => void) {
 }
 
 export function SoundToggle() {
-  const muted = useSyncExternalStore(subscribe, isInteractionSoundMuted, () => true);
+  const muted = useSyncExternalStore(subscribe, isInteractionSoundMuted, () => false);
   const label = muted ? "Turn interaction sounds on" : "Turn interaction sounds off";
 
   function toggleSound() {
