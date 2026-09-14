@@ -3,11 +3,13 @@ import { ActionLink, CompanyLink } from "@/components/editorial-links";
 import { ResumeSkillJoke } from "@/components/resume-skill-joke";
 import { ExperienceYears } from "@/components/experience-years";
 import { getProfessionalExperienceYears } from "@/lib/professional-experience";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Résumé",
   description: `${profile.name} — ${profile.title}. Product engineering, frontend architecture, AI workflows, and full-stack delivery.`,
-};
+  path: "/resume",
+});
 
 export default function Resume() {
   return (

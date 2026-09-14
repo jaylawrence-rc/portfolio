@@ -167,7 +167,7 @@ main section[id] { scroll-margin-top: 104px; }
 .work-entry-meta { display: flex; flex-direction: column; gap: 5px; margin-top: 22px; color: var(--subtle); font-size: 13px; }
 .work-entry-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; margin-top: 17px; }
 .work-entry-media { min-width: 0; }
-.filters button { min-height: 44px; }
+.filters a { display: inline-flex; align-items: center; min-height: 44px; }
 .result-count { font-size: 12px; padding-block: 8px; }
 .page-intro h1 { font-weight: 500; }
 .page-intro > p:last-child { font-size: 19px; }

@@ -8,6 +8,8 @@ import { CaseNavigation } from "@/components/case-navigation";
 import { ProjectFeatures } from "@/components/project-features";
 import { ProjectVisual } from "@/components/project-visual";
 import { getProject, projects } from "@/lib/projects";
+import { JsonLd } from "@/components/json-ld";
+import { absoluteUrl, pageMetadata } from "@/lib/site";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -17,7 +19,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectPageProps) {
   const project = getProject((await params).slug);
-  return project ? { title: project.title, description: project.summary } : {};
+  if (!project) notFound();
+  return pageMetadata({ title: project.title, description: project.summary, path: `/work/${project.slug}` });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -30,6 +33,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <article className="case-editorial" style={{ "--project-accent": project.accent } as CSSProperties}>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Work", item: absoluteUrl("/work") },
+          { "@type": "ListItem", position: 3, name: project.title, item: absoluteUrl(`/work/${project.slug}`) },
+        ],
+      }} />
       <header className="case-editorial-header shell">
         <Link className="case-editorial-back" href="/work">
           <ArrowLeft size={16} aria-hidden="true" /> All work

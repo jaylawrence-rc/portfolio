@@ -7,6 +7,9 @@ import { ProjectHoverLink } from "@/components/project-hover-link";
 import { ProjectHoverArrow, ProjectHoverMedia } from "@/components/project-hover-media";
 import { Reveal } from "@/components/reveal";
 import { DecisionExplorer } from "@/components/decision-explorer";
+import { pageMetadata, siteDescription, siteTitle } from "@/lib/site";
+
+export const metadata = pageMetadata({ title: siteTitle, description: siteDescription, path: "/" });
 
 export default function Home() {
   const music = projects[0];

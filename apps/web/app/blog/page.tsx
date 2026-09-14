@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { posts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Blog",
   description: "Notes from Jay Lawrence on product engineering, frontend systems, AI-assisted development, and building software around real business problems.",
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (
@@ -25,7 +27,7 @@ export default function BlogPage() {
               <h2><Link href={`/blog/${post.slug}`}>{post.title}<ArrowUpRight aria-hidden="true" /></Link></h2>
               <p>{post.description}</p>
             </div>
-            <dl><dt>Published</dt><dd>{post.publishedAt}</dd><dt>Reading time</dt><dd>{post.readingTime}</dd></dl>
+            <dl><dt>Published</dt><dd><time dateTime={post.publishedAtISO}>{post.publishedAt}</time></dd><dt>Reading time</dt><dd>{post.readingTime}</dd></dl>
           </article>
         ))}
       </div>
