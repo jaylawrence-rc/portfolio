@@ -14,15 +14,16 @@ Retrieved and visually inspected September 14, 2026. These files come from the p
 - Scope: Official promotional preview depicting the product interface. It is not a new screenshot captured during this task, and should not be described as the current logged-in dashboard or proof of a specific implementation detail.
 - Processing: Original JPEG preserved without resizing or cropping.
 
-### Live Playlist Analyzer hover
+### Playlist Analyzer screenshot
 
+- Local asset: `/projects/music-stats-playlist-analyzer.jpg`
+- Dimensions: 1280 × 720
 - Public source: [Playlist Analyzer](https://musicstats.com/playlist-analyzer).
-- Verified September 14, 2026 in the browser and inside the portfolio preview.
-- The public tool entry page shows playlist search and an introduction to playlist analysis. No private account or authenticated result was accessed.
-- It is rendered as a noninteractive live iframe at a fixed 1280 × 720 desktop viewport, proportionally fitted to the hover surface. This is an actual public page, not a generated or reconstructed screenshot.
-- Public response returned HTTP 200 without `X-Frame-Options` or CSP framing restrictions. That check and successful embedding describe the current state; the source can change.
-- Label: “Playlist Analyzer”; source cue: “Live interface”. The case study includes a direct link for all input methods.
-- A bounded search did not find a separate official tool screenshot; public social metadata reused the homepage preview.
+- Captured and visually inspected September 15, 2026 in the browser.
+- The public tool entry page shows Spotify playlist search and an introduction to mood, genre, and artist analysis. No private account or authenticated result was accessed.
+- The local screenshot replaces the live iframe in project hover previews and also appears as a labeled case-study figure. The case study retains a direct link to the public tool.
+- Label: “Playlist Analyzer”; caption: “Music Stats’ public Playlist Analyzer interface.”
+- Processing: Original browser screenshot JPEG preserved without resizing, cropping, or interface changes.
 
 ## Evelan
 

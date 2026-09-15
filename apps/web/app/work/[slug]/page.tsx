@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <section id="decisions" className="case-editorial-section" aria-labelledby="decisions-heading">
             <h2 id="decisions-heading" className="case-editorial-label">02 <span aria-hidden="true">/</span> Product decisions</h2>
             <ProjectFeatures project={project} />
-            {project.hoverPage ? <a className="editorial-link" href={project.hoverPage.url} target="_blank" rel="noreferrer">Explore {project.hoverPage.label} <ArrowUpRight size={16} aria-hidden="true" /></a> : null}
+            {project.previewLink ? <a className="editorial-link" href={project.previewLink.url} target="_blank" rel="noreferrer">Explore {project.previewLink.label} <ArrowUpRight size={16} aria-hidden="true" /></a> : null}
             {project.detailImage ? (
               <figure className="case-editorial-detail">
                 <Image
