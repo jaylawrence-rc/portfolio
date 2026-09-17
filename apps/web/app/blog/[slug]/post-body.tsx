@@ -112,7 +112,6 @@ function FrontendHipaaReadinessPost() {
         <p className="eyebrow">References</p>
         <h2>The review and vendor guidance behind this entry.</h2>
         <ul>
-          <li><a href="https://app.notion.com/p/Front-End-2709da9cff3780cbb64bfba66d0646ca"><strong>RAVproAI:</strong> Front-End HIPAA Compliance &amp; Security Readiness</a></li>
           <li><a href="https://trust.posthog.com/"><strong>PostHog:</strong> Trust Center</a></li>
           <li><a href="https://vercel.com/kb/guide/is-vercel-hipaa-compliant"><strong>Vercel:</strong> HIPAA support</a></li>
           <li><a href="https://vercel.com/kb/guide/hipaa-compliance-guide-vercel"><strong>Vercel:</strong> HIPAA deployment guidance</a></li>
