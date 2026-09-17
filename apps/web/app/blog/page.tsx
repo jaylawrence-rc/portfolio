@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Blog",
-  description: "Notes from Jay Lawrence on product engineering, frontend systems, AI-assisted development, and building software around real business problems.",
+  description: "Notes from Jay Lawrence on product engineering, frontend systems, AI-assisted development, privacy, and building trustworthy software around real problems.",
   path: "/blog",
 });
 
@@ -15,7 +15,7 @@ export default function BlogPage() {
       <header className="page-intro blog-intro">
         <p className="eyebrow">Blog · field notes from the work</p>
         <h1>Engineering decisions, written down.</h1>
-        <p>Practical notes on AI-assisted development, frontend architecture, product judgment, and the systems that help teams ship clearly.</p>
+        <p>Practical notes on AI-assisted development, frontend architecture, product judgment, privacy, and the systems that help teams ship responsibly.</p>
       </header>
 
       <div className="post-index">
