@@ -76,15 +76,16 @@
 
 .blog-intro{max-width:780px}
 .post-index{border-top:1px solid var(--border)}
-.post-row{display:grid;grid-template-columns:52px minmax(0,1fr) 150px;gap:clamp(28px,5vw,72px);padding:54px 0;border-bottom:1px solid var(--border);align-items:start}
-.post-row>span{font:11px "Geist Mono",monospace;color:var(--subtle);padding-top:8px}
-.post-row h2{font-size:clamp(27px,3vw,40px);line-height:1.1;letter-spacing:-.035em;margin:11px 0 15px;font-weight:550;max-width:780px}
+.post-row{display:grid;grid-template-columns:40px minmax(0,.9fr) minmax(360px,1.1fr);gap:clamp(26px,4vw,64px);padding:64px 0;border-bottom:1px solid var(--border);align-items:center}
+.post-row__number{font:11px "Geist Mono",monospace;color:var(--subtle);align-self:start;padding-top:8px}
+.post-row h2{font-size:clamp(27px,3vw,40px);line-height:1.1;letter-spacing:-.035em;margin:11px 0 15px;font-weight:550;max-width:640px}
 .post-row h2 a{display:inline-flex;align-items:flex-start;gap:12px}
 .post-row h2 svg{width:19px;min-width:19px;margin-top:5px;opacity:.35;transition:transform .18s var(--ease-out-expo),opacity .18s ease}
-.post-row>div>p:last-child{color:var(--muted);font-size:16px;line-height:1.65;max-width:720px}
-.post-row dl{margin:5px 0 0}
-.post-row dt{font:10px "Geist Mono",monospace;text-transform:uppercase;color:var(--subtle);margin-top:15px}.post-row dt:first-child{margin-top:0}
-.post-row dd{margin:3px 0 0;font-size:13px;color:var(--muted)}
+.post-row__copy>p:not(.eyebrow){color:var(--muted);font-size:16px;line-height:1.65;max-width:590px}
+.post-row dl{display:grid;grid-template-columns:auto 1fr;gap:3px 18px;margin:30px 0 0;padding-top:18px;border-top:1px solid var(--border)}
+.post-row dt{font:10px "Geist Mono",monospace;text-transform:uppercase;color:var(--subtle)}
+.post-row dd{margin:0;font-size:12px;color:var(--muted)}
+.post-row__visual{min-width:0;container-type:inline-size}
 .blog-article{padding-top:70px;padding-bottom:140px}
 .blog-article-header .back-link{margin-bottom:72px}
 .blog-article-header h1{font-size:clamp(42px,5.2vw,68px);line-height:1.01;letter-spacing:-.05em;margin:18px 0 27px;font-weight:560;text-wrap:balance}
@@ -105,11 +106,6 @@
 .article-prose li{position:relative;padding:15px 0 15px 34px;border-bottom:1px solid var(--border);counter-increment:article-list}
 .article-prose ul li:before{content:"↳";position:absolute;left:0;color:var(--accent)}
 .article-prose ol li:before{content:counter(article-list,decimal-leading-zero);position:absolute;left:0;top:19px;font:10px "Geist Mono",monospace;color:var(--accent)}
-.workflow-strip{display:grid;grid-template-columns:repeat(5,1fr);margin:38px 0 58px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.workflow-strip>div{min-height:92px;padding:17px 12px;border-left:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between}
-.workflow-strip>div:first-child{border-left:0;padding-left:0}
-.workflow-strip span{font:10px "Geist Mono",monospace;color:var(--accent)}
-.workflow-strip strong{font-size:13px}
 .article-end{margin-top:110px;padding:38px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .article-end h2{font-size:clamp(27px,3vw,36px);line-height:1.2;letter-spacing:-.035em;margin:12px 0 25px;font-weight:550}
 .article-end a{display:inline-flex;align-items:center;gap:8px;font-weight:550}.article-end a svg{transition:transform .18s var(--ease-out-expo)}
@@ -165,14 +161,12 @@
 .evidence-foot{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--border);padding-top:10px;font:8px "Geist Mono",monospace;color:var(--subtle)}
 
 @media(max-width:780px){
-  .post-row{grid-template-columns:28px 1fr;gap:12px 16px;padding:42px 0}
-  .post-row dl{grid-column:2;display:grid;grid-template-columns:auto 1fr;gap:3px 22px}.post-row dt{margin:0}.post-row dd{margin:0}
+  .post-row{grid-template-columns:26px minmax(0,1fr);gap:14px 14px;padding:48px 0;align-items:start}
+  .post-row__visual{grid-column:1/-1;margin-top:15px}
+  .post-row dl{grid-template-columns:auto 1fr;gap:3px 18px}
   .blog-article{padding-top:46px;padding-bottom:96px}
   .blog-article-header .back-link{margin-bottom:52px}
   .article-prose{padding-top:50px}.article-prose section{margin-top:78px}
-  .workflow-strip{grid-template-columns:1fr;margin:30px 0 44px}
-  .workflow-strip>div{min-height:54px;padding:12px 0;border-left:0;border-top:1px solid var(--border);flex-direction:row;align-items:center}
-  .workflow-strip>div:first-child{border-top:0}
   .project-feature-heading{grid-template-columns:1fr;gap:18px;margin-bottom:34px}
   .project-feature-heading .eyebrow{grid-column:1}
   .project-feature-grid{grid-template-columns:1fr}

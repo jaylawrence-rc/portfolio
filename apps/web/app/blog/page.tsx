@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { PostArtworkPreview, type PostArtworkVariant } from "@/components/journal-visuals";
 import { posts } from "@/lib/posts";
 import { pageMetadata } from "@/lib/site";
+
+const artworkBySlug: Record<string, PostArtworkVariant> = {
+  "frontend-hipaa-readiness-protecting-phi-in-the-browser": "browser",
+  "structuring-product-data-for-ai-agents-with-hipaa-in-mind": "data",
+  "learning-hipaa-compliance-as-a-software-engineer": "compliance",
+  "how-i-use-ai-in-my-development-workflow": "workflow",
+};
 
 export const metadata = pageMetadata({
   title: "Blog",
@@ -21,13 +29,19 @@ export default function BlogPage() {
       <div className="post-index">
         {posts.map((post, index) => (
           <article className="post-row" key={post.slug}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
+            <span className="post-row__number">{String(index + 1).padStart(2, "0")}</span>
+            <div className="post-row__copy">
               <p className="eyebrow">{post.topics[0]}</p>
               <h2><Link href={`/blog/${post.slug}`}>{post.title}<ArrowUpRight aria-hidden="true" /></Link></h2>
               <p>{post.description}</p>
+              <dl><dt>Published</dt><dd><time dateTime={post.publishedAtISO}>{post.publishedAt}</time></dd><dt>Reading time</dt><dd>{post.readingTime}</dd></dl>
             </div>
-            <dl><dt>Published</dt><dd><time dateTime={post.publishedAtISO}>{post.publishedAt}</time></dd><dt>Reading time</dt><dd>{post.readingTime}</dd></dl>
+            <div className="post-row__visual">
+              <PostArtworkPreview
+                variant={artworkBySlug[post.slug] ?? "workflow"}
+                ariaLabel={`Visual summary for ${post.title}`}
+              />
+            </div>
           </article>
         ))}
       </div>

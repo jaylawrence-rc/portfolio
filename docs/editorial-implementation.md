@@ -80,3 +80,19 @@ The Music Stats homepage contribution now highlights Chartmetric with the portfo
 About and Résumé now use a shared count of completed years since June 1, 2022. The calculation uses UTC calendar anniversaries and clamps dates before the start to zero. A client component receives the server-rendered count for consistent hydration, then reads the current date so a static deployment does not freeze the visible count. It also refreshes at UTC midnight and when the visitor returns to the page, with timer/listener cleanup on unmount. Singular and plural labels are handled automatically.
 
 Both pages currently render “4 years of professional experience.” The next increase is June 1, 2027; no annual copy change or redeployment is needed for the browser display.
+
+## Visual journal system
+
+Added September 18, 2026. The journal now uses an editorial systems-notebook language instead of long uninterrupted prose. Each entry opens with a topic-specific schematic and alternates readable copy with wide process maps, ownership diagrams, qualitative comparisons, safeguard layers, and evidence matrices. The archive pairs every entry with its own visual summary.
+
+The reusable components live in `apps/web/components/journal-visuals.tsx` with styles in `journal-visuals.css`. Prose stays on the 40.5rem reading rail; explanatory figures can expand to the 70rem media rail, and split spreads give text and visual evidence roughly equal weight. Mobile recomposes every horizontal relationship into a labeled vertical sequence without hiding information or creating horizontal overflow.
+
+The frontend HIPAA entry uses a dedicated telemetry allowlist diagram instead of a generic side-by-side comparison. It separates blocked browser signals, the default-deny policy boundary, the single approved route-category event, and the controls that enforce the boundary. Lime marks only the gate and permitted path.
+
+Its browser-state section uses a session-lifetime diagram rather than another comparison card. The old path shows state crossing the authority boundary into durable residue; the current path keeps working state in memory, routes every trust-boundary event through one purge gate, and names the stores, caches, and identity state left empty afterward.
+
+The AI data architecture entry uses two additional visual grammars. Its authority-contract diagram shows the request, candidate, product-only commit, and post-commit mirror as separate directional exchanges; its memory-lifecycle diagram terminates per-job execution state and permits reusable correction memory only through a reviewed, governed path. Both use container queries because their live width is determined by the editorial split column rather than the viewport.
+
+Motion is explanatory and runs once when an animated figure enters the viewport. It changes only opacity and transform, never blocks reading, and leaves the full diagram visible before JavaScript initializes. Reduced motion removes spatial animation and renders the final state immediately. The diagrams use labels, structure, and captions in addition to color, work in both themes, and avoid fabricated quantitative charts.
+
+Verified all four article routes and the journal archive at desktop and 390px widths. Every article contains five or more semantic figures, all tested routes have matching viewport and document widths, and browser logs contain no warnings or errors. Production build, TypeScript, ESLint, and whitespace checks pass.
