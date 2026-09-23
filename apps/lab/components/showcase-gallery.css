@@ -1,0 +1,592 @@
+.labShowcase {
+  --showcase-ink: var(--foreground);
+  color: var(--showcase-ink);
+  overflow: clip;
+}
+
+.labShowcaseShell {
+  width: min(1480px, calc(100% - 2 * clamp(20px, 4.5vw, 76px)));
+  margin-inline: auto;
+}
+
+.labShowcaseEyebrow,
+.labShowcaseHeroMeta,
+.labShowcaseSceneTop,
+.labShowcaseSceneBottom,
+.labShowcaseIndex,
+.labShowcaseChapterFooter,
+.labShowcaseMediaDetail,
+.labShowcaseMethodFoot,
+.labShowcaseClosingNumber,
+.labShowcaseClosingName small,
+.labShowcaseDisclosure {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  line-height: 1.5;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.labShowcaseHero {
+  padding-top: clamp(42px, 5vw, 78px);
+  background: var(--background);
+}
+
+.labShowcaseHeroMeta,
+.labShowcaseSceneTop,
+.labShowcaseSceneBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.labShowcaseHeroMeta {
+  border-top: 1px solid var(--foreground);
+  padding-top: .8rem;
+  color: var(--muted);
+}
+
+.labShowcaseHeroMeta p,
+.labShowcaseHeroHeadline p,
+.labShowcaseSceneTop span,
+.labShowcaseSceneBottom span {
+  margin: 0;
+}
+
+.labShowcaseHeroHeadline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, .32fr);
+  align-items: end;
+  gap: clamp(2rem, 6vw, 8rem);
+  padding: clamp(2.5rem, 4.5vw, 4.8rem) 0 clamp(3rem, 4.5vw, 5rem);
+}
+
+.labShowcaseHero h1 {
+  margin: 0;
+  font-size: clamp(5.2rem, 11.4vw, 11.9rem);
+  font-weight: 540;
+  line-height: .83;
+  letter-spacing: -.092em;
+  text-wrap: balance;
+}
+
+.labShowcaseHero h1 em {
+  display: block;
+  color: var(--muted);
+  font-style: normal;
+}
+
+.labShowcaseHeroHeadline > div {
+  padding-bottom: .2rem;
+}
+
+.labShowcaseHeroHeadline p {
+  max-width: 390px;
+  font-size: clamp(1.08rem, 1.6vw, 1.35rem);
+  line-height: 1.48;
+  letter-spacing: -.027em;
+}
+
+.labShowcaseScrollLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 220px;
+  min-height: 48px;
+  gap: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--foreground);
+  border-bottom: 1px solid var(--foreground);
+  font-size: .86rem;
+  font-weight: 550;
+}
+
+.labShowcaseScrollLink span {
+  font-size: 1.15rem;
+  transition: transform .25s var(--ease-editorial);
+}
+
+.labShowcaseScrollLink:hover span,
+.labShowcaseScrollLink:focus-visible span {
+  transform: translateY(4px);
+}
+
+.labShowcaseHeroScene {
+  position: relative;
+  min-height: clamp(430px, 43vw, 660px);
+  padding: clamp(18px, 2.5vw, 40px) clamp(20px, 4.5vw, 76px);
+  background: #202622;
+  color: #f7f6f0;
+  isolation: isolate;
+}
+
+.labShowcaseHeroScene::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(25% - 1px), #fff 25%);
+  content: "";
+  opacity: .035;
+  pointer-events: none;
+}
+
+.labShowcaseSceneTop,
+.labShowcaseSceneBottom {
+  position: relative;
+  z-index: 2;
+  color: #d4dbd1;
+}
+
+.labShowcaseSceneTop { border-top: 1px solid #626b60; padding-top: .65rem; }
+.labShowcaseSceneBottom { border-bottom: 1px solid #626b60; padding-bottom: .65rem; }
+
+.labShowcaseSceneGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, .92fr) minmax(0, 1.16fr);
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 42px);
+  min-height: clamp(355px, 36vw, 540px);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.labShowcaseScenePanel {
+  min-width: 0;
+  box-shadow: 0 30px 90px #0c130e80;
+}
+
+.labShowcaseScenePanel--ship { transform: translateY(-22px) rotate(-2deg); }
+.labShowcaseScenePanel--journal { transform: translateY(30px) rotate(2deg); }
+.labShowcaseScenePanel--signal {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #a7b7ab;
+  background: #1e2d37;
+  transform: translateY(-10px) rotate(-1deg);
+}
+.labShowcaseScenePanel--signal img { object-fit: cover; }
+.labShowcaseScenePanel--signal > span {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .7rem;
+  padding: .75rem .9rem;
+  background: #182221e8;
+  color: #f7f6f0;
+  font: 600 .76rem var(--font-body);
+}
+.labShowcaseScenePanel--signal small { font: .65rem var(--font-mono); text-transform: uppercase; }
+
+.labShowcaseSceneSeal {
+  position: absolute;
+  right: 1.5%;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(92px, 11vw, 160px);
+  aspect-ratio: 1;
+  background: var(--accent-bright);
+  color: #202622;
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  line-height: .8;
+  letter-spacing: -.08em;
+  text-align: center;
+  transform: rotate(-8deg);
+  box-shadow: 8px 8px 0 #202622, 9px 9px 0 #cfff04;
+}
+
+.labShowcaseSceneSeal small {
+  display: block;
+  margin-top: .55rem;
+  font: 600 clamp(.55rem, .8vw, .78rem)/1.15 var(--font-mono);
+  letter-spacing: .02em;
+}
+
+.labShowcaseBrowser {
+  overflow: hidden;
+  border: 1px solid #202622;
+  background: #f9f8f3;
+}
+
+.labShowcaseBrowserBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 12px;
+  border-bottom: 1px solid #d2d7cb;
+  background: #f5f5ef;
+  color: #3a443c;
+  font: .61rem var(--font-mono);
+  letter-spacing: .025em;
+}
+
+.labShowcaseBrowserBar > span:first-child { display: flex; gap: 4px; }
+.labShowcaseBrowserBar i { width: 5px; height: 5px; border: 1px solid #768276; border-radius: 50%; }
+.labShowcaseBrowserImage { position: relative; aspect-ratio: 16 / 10; }
+.labShowcaseBrowserImage img { object-fit: cover; object-position: top center; }
+
+.labShowcaseIndex {
+  position: sticky;
+  top: 0;
+  z-index: 16;
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.labShowcaseIndex .labShowcaseShell {
+  display: grid;
+  grid-template-columns: 1fr repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.labShowcaseIndex .labShowcaseShell > span,
+.labShowcaseIndex a {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  min-height: 63px;
+  padding: .5rem clamp(.7rem, 1.8vw, 1.8rem);
+}
+
+.labShowcaseIndex .labShowcaseShell > span { padding-left: 0; color: var(--muted); }
+.labShowcaseIndex a { border-left: 1px solid var(--border); transition: background .2s ease; }
+.labShowcaseIndex a:hover,
+.labShowcaseIndex a:focus-visible { background: var(--accent-soft); }
+.labShowcaseIndex b { color: var(--subtle); font-weight: 500; }
+.labShowcaseIndex .labShowcaseArrow { margin-left: auto; }
+
+.labShowcaseArrow { display: inline-block; font-size: 1.25rem; font-weight: 400; line-height: 1; transition: transform .25s var(--ease-editorial); }
+a:hover > .labShowcaseArrow,
+a:focus-visible > .labShowcaseArrow { transform: translate(4px, -2px); }
+
+.labShowcaseChapter {
+  --chapter-surface: #efe5d8;
+  --chapter-ink: #292720;
+  --chapter-muted: #615f55;
+  --chapter-accent: #d97750;
+  --chapter-stage: #e6a082;
+  min-height: 900px;
+  background: var(--chapter-surface);
+  color: var(--chapter-ink);
+  scroll-margin-top: 63px;
+}
+
+.labShowcaseChapter--journal-retrofit {
+  --chapter-surface: #e3ede6;
+  --chapter-ink: #18372b;
+  --chapter-muted: #446256;
+  --chapter-accent: #306c55;
+  --chapter-stage: #bdd8c5;
+}
+
+.labShowcaseChapter--signal-atlas {
+  --chapter-surface: #1e2c2d;
+  --chapter-ink: #f2f3ea;
+  --chapter-muted: #c4d0cb;
+  --chapter-accent: #cfff04;
+  --chapter-stage: #33484a;
+}
+
+.labShowcaseChapter--signal-atlas .labShowcaseChapterImage { box-shadow: 18px 25px 0 #0c1a1bd9; }
+.labShowcaseChapter--signal-atlas .labShowcaseAction--primary { background: var(--accent-bright); color: #17221e; }
+.labShowcaseChapter--signal-atlas .labShowcaseAction--primary:hover { background: #f2f3ea; color: #17221e; }
+
+.labShowcaseIllustration { position: relative; width: 100%; aspect-ratio: 16 / 10; margin: 0; overflow: hidden; background: #1e2d37; }
+.labShowcaseIllustration img { object-fit: cover; }
+.labShowcaseIllustration figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: .85rem 1rem;
+  background: #142022e8;
+  color: #f2f3ea;
+  font: .65rem var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.labShowcaseChapterInner {
+  display: grid;
+  grid-template-columns: minmax(300px, .39fr) minmax(0, .61fr);
+  gap: clamp(42px, 6vw, 110px);
+  width: min(1480px, calc(100% - 2 * clamp(20px, 4.5vw, 76px)));
+  margin-inline: auto;
+  padding-block: clamp(96px, 10vw, 160px);
+}
+
+.labShowcaseChapterCopy {
+  position: sticky;
+  top: 116px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: start;
+  min-height: min(650px, calc(100vh - 160px));
+}
+
+.labShowcaseChapter .labShowcaseEyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 0;
+  padding-top: .65rem;
+  border-top: 1px solid var(--chapter-ink);
+}
+
+.labShowcaseChapter h2 {
+  max-width: 600px;
+  margin: 2.5rem 0 1.7rem;
+  font-size: clamp(4.3rem, 6.5vw, 7.2rem);
+  font-weight: 540;
+  line-height: .86;
+  letter-spacing: -.08em;
+}
+
+.labShowcaseChapterSummary {
+  max-width: 420px;
+  margin: 0;
+  color: var(--chapter-muted);
+  font-size: clamp(1.03rem, 1.4vw, 1.24rem);
+  line-height: 1.55;
+  letter-spacing: -.018em;
+}
+
+.labShowcaseActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-top: clamp(2rem, 3vw, 3rem);
+}
+
+.labShowcaseAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 48px;
+  font-size: .86rem;
+  font-weight: 550;
+}
+
+.labShowcaseAction--primary {
+  min-width: 230px;
+  padding: .6rem 1rem;
+  background: var(--chapter-ink);
+  color: var(--chapter-surface);
+}
+
+.labShowcaseAction--primary:hover { background: var(--chapter-accent); color: #fff; }
+.labShowcaseAction--text { border-bottom: 1px solid currentColor; }
+.labShowcaseChapterFooter { margin: 2rem 0 0; color: var(--chapter-muted); }
+
+.labShowcaseChapterStage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(500px, 51vw, 760px);
+  padding: clamp(24px, 4vw, 76px);
+  overflow: hidden;
+  background: var(--chapter-stage);
+}
+
+.labShowcaseChapterStage::before,
+.labShowcaseChapterStage::after {
+  position: absolute;
+  border: 1px solid var(--chapter-ink);
+  content: "";
+  opacity: .32;
+  pointer-events: none;
+}
+
+.labShowcaseChapterStage::before { top: 4.5%; left: 5%; width: 27%; aspect-ratio: 1; }
+.labShowcaseChapterStage::after { right: 5%; bottom: 5%; width: 40%; height: 18%; }
+.labShowcaseChapterImage { position: relative; z-index: 2; width: min(100%, 800px); box-shadow: 18px 25px 0 #18231d26; }
+.labShowcaseStageIndex { position: absolute; right: .02em; bottom: -.16em; color: var(--chapter-ink); font-size: clamp(14rem, 27vw, 31rem); line-height: 1; letter-spacing: -.12em; opacity: .09; pointer-events: none; }
+
+.labShowcaseMediaDetail { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; border-top: 1px solid var(--chapter-ink); border-bottom: 1px solid var(--chapter-ink); margin-top: 1.2rem; padding: .8rem 0; }
+.labShowcaseMediaDetail p { margin: 0; }
+.labShowcaseMediaDetail ol { display: flex; justify-content: space-between; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.labShowcaseMediaDetail li { display: flex; align-items: baseline; gap: .65rem; white-space: nowrap; }
+.labShowcaseMediaDetail li span { color: var(--chapter-muted); }
+
+.labShowcaseMethod {
+  padding: clamp(100px, 11vw, 180px) 0 clamp(90px, 10vw, 160px);
+  background: #1e2721;
+  color: #f4f5ee;
+  scroll-margin-top: 63px;
+}
+
+.labShowcaseMethodHead .labShowcaseEyebrow { display: flex; justify-content: space-between; margin: 0; padding-top: .7rem; border-top: 1px solid #a0ada0; color: #bac8b7; }
+.labShowcaseMethodHead > div { display: grid; grid-template-columns: 1fr minmax(250px, .36fr); align-items: end; gap: 3rem; padding: clamp(3rem, 7vw, 8rem) 0 clamp(3rem, 5vw, 6rem); }
+.labShowcaseMethod h2 { max-width: 930px; margin: 0; font-size: clamp(4.4rem, 8.5vw, 9.5rem); font-weight: 530; line-height: .88; letter-spacing: -.085em; }
+.labShowcaseMethod h2 em { color: var(--accent-bright); font-style: normal; }
+.labShowcaseMethodHead > div > p { max-width: 390px; margin: 0; color: #c0cbbf; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.55; }
+.labShowcaseDiagram { position: relative; aspect-ratio: 16 / 9; width: 100%; background: #f8f7f2; }
+.labShowcaseDiagram img { object-fit: contain; }
+.labShowcaseDiagramMobile { display: none; }
+.labShowcaseMethodFoot { display: grid; grid-template-columns: repeat(3, 1fr) 1.5fr; align-items: center; gap: 1.5rem; padding-top: .85rem; border-top: 1px solid #a0ada0; margin-top: 2rem; color: #c0cbbf; }
+.labShowcaseMethodFoot a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; color: #f4f5ee; text-transform: none; font: 500 .9rem var(--font-body); letter-spacing: 0; }
+
+.labShowcaseClosing { padding: clamp(100px, 11vw, 170px) 0 clamp(90px, 9vw, 150px); background: var(--background); color: var(--foreground); }
+.labShowcaseClosingHead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, .31fr); align-items: end; column-gap: 3rem; padding-bottom: clamp(3rem, 5vw, 6rem); }
+.labShowcaseClosingHead .labShowcaseEyebrow { grid-column: 1 / -1; margin: 0 0 2.5rem; padding-top: .65rem; border-top: 1px solid var(--foreground); color: var(--muted); }
+.labShowcaseClosing h2 { max-width: 900px; margin: 0; font-size: clamp(4.3rem, 8.4vw, 9rem); font-weight: 540; line-height: .87; letter-spacing: -.08em; }
+.labShowcaseClosingHead > p:last-child { max-width: 360px; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.5; }
+.labShowcaseClosingList { border-top: 1px solid var(--foreground); }
+.labShowcaseClosingRow { display: grid; grid-template-columns: 55px 110px minmax(0, 1fr) 40px; align-items: center; gap: clamp(1rem, 2.5vw, 2.7rem); min-height: 150px; border-bottom: 1px solid var(--border-strong); transition: background .2s ease, padding .2s var(--ease-editorial); }
+.labShowcaseClosingRow:hover,
+.labShowcaseClosingRow:focus-visible { padding-inline: 1rem; background: var(--surface-2); }
+.labShowcaseClosingThumb { position: relative; width: 110px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface-2); }
+.labShowcaseClosingThumb img { object-fit: cover; object-position: top center; }
+.labShowcaseClosingName { display: flex; flex-direction: column; gap: .25rem; }
+.labShowcaseClosingName strong { font-size: clamp(1.8rem, 3.5vw, 3.4rem); font-weight: 530; line-height: 1.05; letter-spacing: -.06em; }
+.labShowcaseClosingName small { color: var(--muted); }
+.labShowcaseClosingRow > .labShowcaseArrow { justify-self: end; font-size: 1.9rem; }
+.labShowcaseDisclosure { max-width: 850px; margin: 2.5rem 0 0; color: var(--muted); text-transform: none; letter-spacing: 0; font-size: .75rem; line-height: 1.65; }
+
+@keyframes labShowcaseIntro {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes labShowcaseEnter {
+  from { opacity: .7; transform: translateY(38px) scale(1.035); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes labShowcaseDiagramEnter {
+  from { opacity: .7; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .labShowcaseHeroHeadline { animation: labShowcaseIntro .8s var(--ease-out-expo) both; }
+  .labShowcaseHeroScene { animation: labShowcaseIntro 1s .12s var(--ease-out-expo) both; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+    .labShowcaseChapterImage {
+      animation: labShowcaseEnter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 42%;
+    }
+    .labShowcaseDiagram {
+      animation: labShowcaseDiagramEnter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .labShowcaseHeroHeadline { grid-template-columns: 1fr; gap: 2rem; }
+  .labShowcaseHero h1 { font-size: clamp(5.2rem, 13.7vw, 10rem); }
+  .labShowcaseHeroHeadline p { max-width: 630px; }
+  .labShowcaseChapterInner { gap: 3rem; grid-template-columns: minmax(270px, .38fr) minmax(0, .62fr); }
+  .labShowcaseChapter h2 { font-size: clamp(4rem, 7vw, 6rem); }
+  .labShowcaseMediaDetail { grid-template-columns: 1fr; gap: 1rem; }
+  .labShowcaseMethodHead > div { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 820px) {
+  .labShowcaseHero { padding-top: 42px; }
+  .labShowcaseHeroHeadline { padding: 4rem 0; }
+  .labShowcaseHero h1 { font-size: clamp(4.6rem, 15vw, 8.8rem); }
+  .labShowcaseHeroScene { min-height: 0; }
+  .labShowcaseSceneGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 0; padding: 3rem 0; }
+  .labShowcaseScenePanel--ship { transform: translateY(-10px) rotate(-2deg); }
+  .labShowcaseScenePanel--journal { transform: translateY(10px) rotate(2deg); }
+  .labShowcaseScenePanel--signal { grid-column: 1 / -1; width: min(73%, 550px); justify-self: center; transform: rotate(-1deg); }
+  .labShowcaseSceneSeal { display: none; }
+  .labShowcaseIndex .labShowcaseShell { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .labShowcaseIndex .labShowcaseShell > span { display: none; }
+  .labShowcaseIndex a:first-of-type { border-left: 0; }
+  .labShowcaseChapter { min-height: 0; }
+  .labShowcaseChapterInner { grid-template-columns: 1fr; padding-block: 6rem; }
+  .labShowcaseChapterCopy { position: static; min-height: 0; }
+  .labShowcaseChapter h2 { max-width: 650px; margin-top: 3rem; font-size: clamp(4.2rem, 12vw, 7rem); }
+  .labShowcaseChapterFooter { margin-top: 4rem; }
+  .labShowcaseChapterStage { min-height: 0; aspect-ratio: 1.25; }
+  .labShowcaseMethod { padding-block: 6rem; }
+  .labShowcaseMethod h2 { font-size: clamp(4.3rem, 12vw, 7.5rem); }
+  .labShowcaseMethodFoot { grid-template-columns: repeat(3, 1fr); }
+  .labShowcaseMethodFoot a { grid-column: 1 / -1; justify-content: flex-start; }
+  .labShowcaseClosingHead { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 610px) {
+  .labShowcaseHeroMeta p:last-child { display: none; }
+  .labShowcaseHeroHeadline { padding: 3.4rem 0 4rem; }
+  .labShowcaseHero h1 { font-size: clamp(4.2rem, 17vw, 6.6rem); }
+  .labShowcaseHeroHeadline p { font-size: 1rem; }
+  .labShowcaseHeroScene { padding: 18px 20px; }
+  .labShowcaseSceneTop span:nth-child(2) { display: none; }
+  .labShowcaseSceneGrid { display: flex; flex-direction: column; gap: 2rem; padding: 2.5rem 0; }
+  .labShowcaseScenePanel { width: 87%; }
+  .labShowcaseScenePanel--ship { align-self: flex-start; }
+  .labShowcaseScenePanel--journal { align-self: flex-end; }
+  .labShowcaseScenePanel--signal { width: 94%; align-self: flex-start; }
+  .labShowcaseScenePanel--signal > span { flex-direction: column; align-items: flex-start; }
+  .labShowcaseSceneBottom span:last-child { display: none; }
+  .labShowcaseIndex { position: static; }
+  .labShowcaseIndex .labShowcaseShell { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .labShowcaseIndex .labShowcaseShell > span { display: none; }
+  .labShowcaseIndex a { min-height: 52px; padding: .5rem .8rem; gap: .45rem; font-size: .65rem; }
+  .labShowcaseIndex a:nth-of-type(odd) { border-left: 0; }
+  .labShowcaseIndex a:nth-of-type(n + 3) { border-top: 1px solid var(--border); }
+  .labShowcaseIndex .labShowcaseArrow { display: none; }
+  .labShowcaseChapter, .labShowcaseMethod { scroll-margin-top: 56px; }
+  .labShowcaseChapterInner { padding-block: 4.8rem; }
+  .labShowcaseChapter h2 { font-size: clamp(3.9rem, 15vw, 6rem); }
+  .labShowcaseChapterStage { aspect-ratio: 1; padding: 1.2rem; }
+  .labShowcaseStageIndex { font-size: 15rem; }
+  .labShowcaseMediaDetail ol { flex-wrap: wrap; }
+  .labShowcaseMethod h2 { font-size: clamp(3.7rem, 14vw, 6rem); }
+  .labShowcaseMethodHead > div { padding-block: 3rem; }
+  .labShowcaseDiagram { display: none; }
+  .labShowcaseDiagramMobile { display: grid; gap: 0; border: 1px solid #a5b29f; background: #f8f7f2; color: #26302b; }
+  .labShowcaseMobileBlock { padding: 1rem; }
+  .labShowcaseMobileBlock > span:first-child { display: block; margin-bottom: .8rem; font: .64rem var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
+  .labShowcaseMobileScreens { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
+  .labShowcaseMobileScreens > div { position: relative; aspect-ratio: 4 / 3; border: 1px solid #26302b; background: #e6ece5; }
+  .labShowcaseMobileScreens img { object-fit: cover; object-position: top center; }
+  .labShowcaseMobileConnector { display: grid; place-items: center; height: 34px; border-top: 1px solid #a5b29f; border-bottom: 1px solid #a5b29f; background: #e3ecd7; font: 1.2rem var(--font-mono); }
+  .labShowcaseMobileControls { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; border: 1px solid #abb8a6; background: #abb8a6; }
+  .labShowcaseMobileControls > span { display: flex; align-items: center; gap: .8rem; min-height: 75px; padding: .8rem; background: #fff; font: .8rem var(--font-body); }
+  .labShowcaseMobileControls i { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; font-style: normal; }
+  .labShowcaseControlColor { background: linear-gradient(90deg, #cfff04 0 50%, #26302b 50%); }
+  .labShowcaseControlType { font-size: 1.5rem; font-weight: 600; letter-spacing: -.09em; }
+  .labShowcaseControlRadius { border: 2px solid #26302b; border-radius: 3px; }
+  .labShowcaseControlDensity { background: repeating-linear-gradient(to bottom, #26302b 0 2px, transparent 2px 9px); background-clip: content-box; padding: 8px 0; }
+  .labShowcaseMobileRoutes { display: grid; gap: .5rem; }
+  .labShowcaseMobileRoutes a { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding-inline: .7rem; border: 1px solid #26302b; font-size: .8rem; }
+  .labShowcaseMobileRoutes a:hover { background: #e3ecd7; }
+  .labShowcaseMethodFoot { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .labShowcaseMethodFoot span:nth-child(3) { display: none; }
+  .labShowcaseClosing { padding-block: 5rem; }
+  .labShowcaseClosing h2 { font-size: clamp(3.7rem, 14vw, 6rem); }
+  .labShowcaseClosingRow { grid-template-columns: 28px 64px minmax(0, 1fr) 20px; gap: .7rem; min-height: 105px; }
+  .labShowcaseClosingThumb { width: 64px; }
+  .labShowcaseClosingName strong { font-size: clamp(1.25rem, 5.4vw, 2rem); }
+  .labShowcaseClosingName small { font-size: .57rem; }
+  .labShowcaseClosingRow > .labShowcaseArrow { font-size: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .labShowcaseHeroHeadline,
+  .labShowcaseHeroScene,
+  .labShowcaseChapterImage,
+  .labShowcaseDiagram { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .labShowcaseArrow,
+  .labShowcaseScrollLink span { transition: none !important; }
+}

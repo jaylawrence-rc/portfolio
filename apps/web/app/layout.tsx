@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
 import { profile } from "@/lib/profile";
 import { absoluteUrl, personId, siteDescription, siteTitle, siteUrl, websiteId } from "@/lib/site";
+import "@jay/design-system/tokens.css";
 import "./globals.css";
 import "./editorial.css";
 import "@/components/navigation.css";

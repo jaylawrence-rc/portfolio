@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+
+/* Stable visual foundation shared by the portfolio and Jay's Lab. */
+:root {
+  --background: oklch(.977 .003 90);
+  --surface-1: oklch(.993 .002 90);
+  --surface-2: oklch(.948 .004 90);
+  --foreground: oklch(.20 .006 260);
+  --muted: oklch(.43 .008 260);
+  --subtle: oklch(.49 .008 260);
+  --border: oklch(.85 .007 90);
+  --border-strong: oklch(.69 .008 90);
+  --accent: oklch(.43 .12 128);
+  --accent-bright: #cfff04;
+  --accent-ink: oklch(.16 .008 260);
+  --accent-soft: color-mix(in oklch, var(--accent-bright) 18%, var(--surface-1));
+
+  --font-body: Geist, "Helvetica Neue", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --rail-reading: 40.5rem;
+  --rail-media: 70rem;
+  --rail-shell: 75rem;
+  --page-pad: 1.25rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 18px 60px oklch(.12 .01 260 / .12);
+  --ease-out-expo: cubic-bezier(.19, 1, .22, 1);
+  --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+  --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+  --ease-editorial: cubic-bezier(.16, 1, .3, 1);
+  color-scheme: light;
+}
+
+:root[data-theme=dark] {
+  --background: oklch(.16 .005 260);
+  --surface-1: oklch(.185 .006 260);
+  --surface-2: oklch(.215 .006 260);
+  --foreground: oklch(.95 .006 90);
+  --muted: oklch(.75 .007 260);
+  --subtle: oklch(.67 .007 260);
+  --border: oklch(.31 .005 260);
+  --border-strong: oklch(.49 .005 260);
+  --accent: var(--accent-bright);
+  --accent-soft: color-mix(in oklch, var(--accent-bright) 12%, var(--surface-1));
+  --shadow: 0 18px 60px oklch(.02 .01 260 / .5);
+  color-scheme: dark;
+}
+
+.shell { width: min(var(--rail-shell), calc(100% - var(--page-pad) * 2)); margin-inline: auto; }
+.media-rail { width: min(var(--rail-media), calc(100% - var(--page-pad) * 2)); margin-inline: auto; }
+.reading-rail { width: min(var(--rail-reading), calc(100% - var(--page-pad) * 2)); margin-inline: auto; }

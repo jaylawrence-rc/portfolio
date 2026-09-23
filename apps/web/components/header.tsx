@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, Search, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { labUrl } from "@/lib/site";
 import { ThemeToggle } from "./theme-toggle";
 import { CommandMenu, NavigationDialog } from "./command-menu";
 import { SoundToggle } from "./sound-toggle";
@@ -43,6 +44,7 @@ function HeaderNavigation({ path }: { path: string }) {
   return <>
     <nav className="folio-nav-links" aria-label="Primary navigation">
       {navigation.map(item => <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>)}
+      <a href={labUrl}>Lab</a>
     </nav>
     <div className="folio-nav-actions">
       <Link className="folio-nav-resume" href="/resume" aria-current={path === "/resume" ? "page" : undefined}>Résumé</Link>
@@ -54,7 +56,9 @@ function HeaderNavigation({ path }: { path: string }) {
     {overlay === "menu" ? <NavigationDialog className="folio-nav-mobile-dialog" id="folio-mobile-menu" label="Navigation" onClose={closeOverlay}>
       <div className="folio-nav-mobile-heading"><span>Explore</span><button type="button" className="folio-nav-control" aria-label="Close navigation" onClick={closeOverlay}><X size={21} aria-hidden="true" /></button></div>
       <nav className="folio-nav-mobile-links" aria-label="Mobile navigation">
-        {[...navigation, { label: "Résumé", href: "/resume" }, { label: "Contact", href: "/contact" }].map(item => <Link key={item.href} href={item.href} onClick={closeOverlay} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
+        {navigation.map(item => <Link key={item.href} href={item.href} onClick={closeOverlay} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
+        <a href={labUrl}>Lab<ArrowUpRight size={22} aria-hidden="true" /></a>
+        {[{ label: "Résumé", href: "/resume" }, { label: "Contact", href: "/contact" }].map(item => <Link key={item.href} href={item.href} onClick={closeOverlay} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
       </nav>
       <div className="folio-nav-mobile-footer"><span>Make yourself at home.</span><div><SoundToggle /><ThemeToggle /></div></div>
     </NavigationDialog> : null}
