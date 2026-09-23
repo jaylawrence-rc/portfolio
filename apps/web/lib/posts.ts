@@ -15,6 +15,20 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "no-linear-no-asana-ticketing-for-agentic-development",
+    title: "No Linear. No Asana. How I designed ticketing for agentic development",
+    description: "As a lead, I designed a GitHub-native workflow that turns development tickets into clear contracts between teammates and coding agents—without adding another source of truth.",
+    publishedAt: "September 21, 2026",
+    publishedAtISO: "2026-09-21",
+    readingTime: "8 min read",
+    topics: ["Engineering leadership", "Agentic development", "Development workflow"],
+    continueReading: {
+      title: "See the engineering loop that sits behind this ticketing system.",
+      href: "/blog/how-i-use-ai-in-my-development-workflow",
+      label: "Read my AI development workflow",
+    },
+  },
+  {
     slug: "frontend-hipaa-readiness-protecting-phi-in-the-browser",
     title: "Frontend HIPAA readiness: protecting PHI in the browser",
     description: "What a frontend security review taught me about keeping clinical data out of telemetry, URLs, durable browser storage, caches, and unprotected deployments.",

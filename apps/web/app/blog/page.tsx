@@ -5,6 +5,7 @@ import { posts } from "@/lib/posts";
 import { pageMetadata } from "@/lib/site";
 
 const artworkBySlug: Record<string, PostArtworkVariant> = {
+  "no-linear-no-asana-ticketing-for-agentic-development": "workflow",
   "frontend-hipaa-readiness-protecting-phi-in-the-browser": "browser",
   "structuring-product-data-for-ai-agents-with-hipaa-in-mind": "data",
   "learning-hipaa-compliance-as-a-software-engineer": "compliance",

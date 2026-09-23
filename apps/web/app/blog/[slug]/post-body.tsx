@@ -15,6 +15,152 @@ type PostBodyProps = {
   slug: string;
 };
 
+function AgenticTicketWorkflowPost() {
+  return (
+    <>
+      <p className="article-opening">As a lead, I wanted a development workflow built for the way teams work now: people make the decisions, coding agents accelerate the execution, and the ticket keeps both sides aligned. I designed that workflow around GitHub itself—no separate planning system, no duplicated backlog, and no ambiguity about where the work lives.</p>
+
+      <PostArtwork
+        variant="workflow"
+        eyebrow="The leadership decision"
+        title="The issue is the shared contract between the team and the agent."
+        caption="Planning, implementation context, dependencies, and delivery evidence stay beside the code they describe."
+      />
+
+      <section className="journal-spread">
+        <div className="journal-spread__copy">
+          <p className="eyebrow">One source of truth</p>
+          <h2>No Linear. No Asana.</h2>
+          <p>Those are capable products. My decision was not about declaring them bad; it was about removing an unnecessary translation layer. If the repositories, pull requests, reviews, and releases already live in GitHub, the development backlog can live there too.</p>
+          <p>A separate tracker often means someone has to keep a product card, a GitHub issue, and a pull request synchronized. Agents make that duplication more expensive because stale context can now produce code at high speed.</p>
+          <blockquote>In an agentic workflow, duplicated context is not administration. It is a source of implementation errors.</blockquote>
+        </div>
+        <ComparisonDiagram
+          width="reading"
+          title="I removed the handoff between planning context and implementation context."
+          caption="The goal is not fewer tools for its own sake. It is one authoritative path from intent to shipped evidence."
+          relation="becomes"
+          sides={[
+            {
+              label: "Separate tracker",
+              title: "Copy and reconcile",
+              description: "The team repeats scope, status, links, and decisions across systems.",
+              items: ["Planning card", "Repository issue", "Pull request", "Manual status sync"],
+            },
+            {
+              label: "GitHub-native",
+              title: "Plan beside the code",
+              description: "The issue owns intent; the project organizes it; the pull request provides proof.",
+              items: ["One issue", "One project view", "Native relationships", "Automatic lifecycle"],
+              emphasis: true,
+            },
+          ]}
+        />
+      </section>
+
+      <section>
+        <p className="eyebrow">The unit of work</p>
+        <h2>A ticket is a context contract, not a one-line prompt.</h2>
+        <p>“Build the settings page” is not a useful contract for a teammate or an agent. A strong issue explains the result, the boundary, the proof, and the decisions that should not be rediscovered during implementation.</p>
+        <DecisionMatrix
+          title="Every issue answers the questions an implementation agent will otherwise guess."
+          caption="Project metadata such as priority, status, size, owner, and iteration stays in project fields instead of being duplicated in the issue body."
+          columns={["What the ticket records", "Why it matters"]}
+          rows={[
+            { decision: "Outcome", values: ["An independently demonstrable result", "Defines success in product language"] },
+            { decision: "Context + scope", values: ["Problem, users, domain terms, in scope, and out of scope", "Prevents accidental expansion"] },
+            { decision: "Implementation plan", values: ["Decision-level steps without brittle code prescriptions", "Provides direction while leaving room for engineering judgment"] },
+            { decision: "Acceptance + tests", values: ["Observable criteria and concrete test cases", "Turns completion into evidence"] },
+            { decision: "Risk", values: ["Security, privacy, observability, rollout, and rollback", "Makes operational impact visible before coding"] },
+            { decision: "Relationships", values: ["Parent, blockers, related work, and definition of done", "Keeps sequencing explicit"] },
+          ]}
+        />
+      </section>
+
+      <section>
+        <p className="eyebrow">The workflow</p>
+        <h2>The board represents readiness, not activity theater.</h2>
+        <p>I kept the states intentionally small. Each one answers a real question about whether the work is understood, ordered, executable, under review, or proven complete.</p>
+        <ProcessFlow
+          title="Six states are enough to make ownership and readiness visible."
+          caption="New work enters Triage automatically. Priority, area, owner, size, and iteration are assigned by people when the issue is understood."
+          animate
+          steps={[
+            { kicker: "Inbox", label: "Triage", description: "Is this real, safe to discuss, and owned by the right repository?" },
+            { kicker: "Inventory", label: "Backlog", description: "Is the work worth retaining even if it is not scheduled yet?" },
+            { kicker: "Commitment", label: "Ready", description: "Are scope, dependencies, acceptance criteria, and tests clear?", emphasis: true },
+            { kicker: "Execution", label: "In progress", description: "Does one accountable owner have the work?" },
+            { kicker: "Evidence", label: "In review", description: "Is the implementation ready for human and automated review?" },
+            { kicker: "Outcome", label: "Done", description: "Has the observable result been verified and documented?" },
+          ]}
+        />
+      </section>
+
+      <section className="journal-spread journal-spread--reverse">
+        <div className="journal-spread__copy">
+          <p className="eyebrow">Agent-assisted planning</p>
+          <h2>The agent interviews before it implements.</h2>
+          <p>I created a reusable product-management workflow that starts by asking focused questions, recording durable decisions, and exposing ambiguity. Only after the scope is approved does it break the outcome into independently deliverable issues.</p>
+          <p>The agent can inspect repository context, suggest the destination, draft the issue, identify dependencies, and propose a ticket stack. A person still approves the decisions and the act of publishing or modifying work.</p>
+        </div>
+        <LayerStack
+          width="reading"
+          title="Automation has a role at every stage—but never silent authority."
+          caption="The system accelerates preparation and consistency while preserving human judgment at the consequential gates."
+          layers={[
+            { label: "Discover", title: "Interview the outcome", description: "Ask one decision at a time and recommend a concrete answer." },
+            { label: "Document", title: "Retain the decisions", description: "Update shared terminology and durable architecture records when needed." },
+            { label: "Structure", title: "Slice the work", description: "Create vertical, verifiable issues with explicit ownership and dependencies." },
+            { label: "Approve", title: "Human publication gate", description: "Show exactly what will be created or changed before acting.", emphasis: true },
+            { label: "Track", title: "Connect delivery evidence", description: "Link branches, pull requests, reviews, checks, and closure back to the issue." },
+          ]}
+        />
+      </section>
+
+      <section>
+        <p className="eyebrow">Repository ownership</p>
+        <h2>Cross-system work should be coordinated, not collapsed.</h2>
+        <p>One oversized issue is easy to create and hard to deliver. For work spanning several repositories, I use one coordination issue in the repository that owns the user-facing outcome, then create independently testable implementation issues where each change belongs.</p>
+        <BoundaryMap
+          title="Every repository receives work it can own and verify."
+          caption="All issues can appear in one organization project while native parent and blocker relationships preserve delivery order."
+          zones={[
+            { title: "Product surface", description: "Owns the user-visible outcome and the coordination issue.", owner: "Outcome owner", payload: "Experience + acceptance", emphasis: true },
+            { title: "Application service", description: "Owns business rules, persistence, and APIs required by the outcome.", owner: "Service team", payload: "Contract + tests" },
+            { title: "Data or AI system", description: "Owns models, pipelines, evaluation, and bounded processing behavior.", owner: "Data or AI team", payload: "Evaluation + failure modes" },
+            { title: "Infrastructure", description: "Owns deployment, identity, networking, configuration, and rollback.", owner: "Platform team", payload: "Environment + operations" },
+          ]}
+        />
+      </section>
+
+      <section>
+        <p className="eyebrow">Shared operating context</p>
+        <h2>I put the workflow in the repository so it can multiply across the team.</h2>
+        <p>A process that lives only in my head does not scale. I encoded the ticket format, questioning method, repository routing, engineering standards, security rules, and documentation policy as versioned agent instructions beside the code.</p>
+        <p>That canonical source can be synchronized into the coding tools the team uses. The adapters may differ, but the expectations do not. CI detects drift, and the generated copies point teammates back to the source instead of becoming competing manuals.</p>
+        <ProcessFlow
+          title="Team judgment becomes reusable context, then returns as verifiable work."
+          caption="The repository is not merely where implementation lands. It is the distribution mechanism for how the team plans and builds."
+          steps={[
+            { kicker: "Authority", label: "Canonical playbook", description: "Ticketing, architecture, standards, security, and domain language." },
+            { kicker: "Distribution", label: "Tool adapters", description: "The same expectations reach each supported coding agent." },
+            { kicker: "Planning", label: "Structured issue", description: "The agent produces a consistent, reviewable context contract.", emphasis: true },
+            { kicker: "Delivery", label: "Linked implementation", description: "Code, tests, review, and rollout evidence stay attached." },
+            { kicker: "Learning", label: "Updated context", description: "Durable corrections return to the playbook for the next task." },
+          ]}
+        />
+      </section>
+
+      <section>
+        <p className="eyebrow">What leadership means here</p>
+        <h2>As a lead, I designed the system—not just the next assignment.</h2>
+        <p>My role is not to personally translate every conversation into tasks forever. It is to create a development operating system that helps the team make good decisions consistently, whether the next contributor is a senior engineer, a new teammate, or a coding agent.</p>
+        <p>No Linear. No Asana. Just one clear source of truth, strong tickets, explicit human gates, and a workflow that keeps learning from the work it ships.</p>
+      </section>
+    </>
+  );
+}
+
 function FrontendHipaaReadinessPost() {
   return (
     <>
@@ -596,6 +742,8 @@ function AiDevelopmentWorkflowPost() {
 
 export function PostBody({ slug }: PostBodyProps) {
   switch (slug) {
+    case "no-linear-no-asana-ticketing-for-agentic-development":
+      return <AgenticTicketWorkflowPost />;
     case "frontend-hipaa-readiness-protecting-phi-in-the-browser":
       return <FrontendHipaaReadinessPost />;
     case "structuring-product-data-for-ai-agents-with-hipaa-in-mind":
