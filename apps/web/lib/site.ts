@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteUrl = "https://jaylawrence.me";
+export const labUrl = "https://lab.jaylawrence.me";
 export const siteTitle = "Jay Lawrence — Product Engineer";
 export const siteDescription = "Product engineer turning complex workflows into clear, scalable software across AI, healthcare, music data, recruitment, and B2B products.";
 

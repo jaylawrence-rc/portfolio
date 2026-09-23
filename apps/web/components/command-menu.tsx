@@ -6,11 +6,15 @@ import { ArrowUpRight, Search, X } from "lucide-react";
 import { useEffect, useId, useRef, useState, type ReactNode, type RefObject } from "react";
 import { projects } from "@/lib/projects";
 import { posts } from "@/lib/posts";
+import { labUrl } from "@/lib/site";
 
-const searchItems = [
+type SearchItem = { title: string; href: string; meta: string; external?: boolean };
+
+const searchItems: SearchItem[] = [
   { title: "Work archive", href: "/work", meta: "All projects" },
   { title: "About", href: "/about", meta: "Story and principles" },
   { title: "Journal", href: "/blog", meta: "Engineering notes" },
+  { title: "Jay’s Lab", href: labUrl, meta: "Standards, experiments, and showcase", external: true },
   { title: "Résumé", href: "/resume", meta: "Experience" },
   { title: "Contact", href: "/contact", meta: "Start a conversation" },
   ...projects.map(project => ({ title: project.title, href: `/work/${project.slug}`, meta: `${project.industry} · ${project.disciplines.join(", ")}` })),
@@ -90,7 +94,8 @@ function CommandSearch({ onClose }: { onClose: () => void }) {
             moveSelection(event.key === "ArrowDown" ? 1 : -1);
           } else if (event.key === "Enter" && items[activeIndex]) {
             event.preventDefault();
-            router.push(items[activeIndex].href);
+            if (items[activeIndex].external) window.location.assign(items[activeIndex].href);
+            else router.push(items[activeIndex].href);
             onClose();
           }
         }}
@@ -108,17 +113,21 @@ function CommandSearch({ onClose }: { onClose: () => void }) {
       <button type="button" className="folio-nav-control" onClick={onClose} aria-label="Close search"><X size={19} aria-hidden="true" /></button>
     </div>
     <div className="folio-nav-search-results" id={listId} role="listbox" aria-label="Search results">
-      {items.map((item, index) => <Link
-        key={item.href}
-        id={`${listId}-${index}`}
-        ref={element => { resultRefs.current[index] = element; }}
-        href={item.href}
-        role="option"
-        aria-selected={index === activeIndex}
-        tabIndex={-1}
-        onPointerMove={() => setActiveIndex(index)}
-        onClick={onClose}
-      ><span><strong>{item.title}</strong><small>{item.meta}</small></span><ArrowUpRight size={18} aria-hidden="true" /></Link>)}
+      {items.map((item, index) => {
+        const props = {
+          id: `${listId}-${index}`,
+          ref: (element: HTMLAnchorElement | null) => { resultRefs.current[index] = element; },
+          role: "option",
+          "aria-selected": index === activeIndex,
+          tabIndex: -1,
+          onPointerMove: () => setActiveIndex(index),
+          onClick: onClose,
+        };
+        const content = <><span><strong>{item.title}</strong><small>{item.meta}</small></span><ArrowUpRight size={18} aria-hidden="true" /></>;
+        return item.external
+          ? <a key={item.href} href={item.href} {...props}>{content}</a>
+          : <Link key={item.href} href={item.href} {...props}>{content}</Link>;
+      })}
       {!items.length ? <p className="folio-nav-empty">No matches. Try a project name or “résumé”.</p> : null}
     </div>
     <div className="folio-nav-search-footer"><span>↑ ↓ to choose · Enter to open</span><span>Esc to close</span></div>

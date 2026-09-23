@@ -1,0 +1,9 @@
+{
+  "name": "@jay/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./tokens.css": "./tokens.css"
+  },
+  "sideEffects": ["./tokens.css"]
+}

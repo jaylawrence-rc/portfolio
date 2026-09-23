@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="process-title process-description">
+  <title id="process-title">From working prototypes to live routes</title>
+  <desc id="process-description">Two distinct interface prototypes feed into a central matrix of color, typography, radius, and density decisions, then branch into two live routes that can be inspected.</desc>
+  <defs>
+    <pattern id="fine-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#DCDDD5" stroke-width=".6"/>
+    </pattern>
+    <clipPath id="prototype-a-clip"><rect x="64" y="262" width="380" height="228"/></clipPath>
+    <clipPath id="prototype-b-clip"><rect x="64" y="520" width="380" height="228"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F8F7F2"/>
+  <rect x="32" y="224" width="1536" height="552" fill="url(#fine-grid)" opacity=".48"/>
+
+  <g fill="#26302B" font-family="Geist, Helvetica Neue, Arial, sans-serif">
+    <text x="64" y="62" font-family="Geist Mono, monospace" font-size="17" letter-spacing="1.7">JAY'S LAB  /  SHOWCASE SYSTEM</text>
+    <text x="1536" y="62" text-anchor="end" font-family="Geist Mono, monospace" font-size="17" letter-spacing="1.7">FIG. 03  —  PROCESS</text>
+    <path d="M64 82H1536" stroke="#9EA59A" stroke-width="1.5"/>
+    <text x="62" y="176" font-size="82" font-weight="500" letter-spacing="-6">Prototype → decision → proof.</text>
+    <text x="1536" y="169" text-anchor="end" font-family="Geist Mono, monospace" font-size="16" letter-spacing=".7">02 INPUTS  /  04 CHOICES  /  02 ROUTES</text>
+    <path d="M64 199H1536" stroke="#26302B" stroke-width="1.5"/>
+  </g>
+
+  <!-- The connecting lines stay behind the interface samples. -->
+  <g fill="none" stroke="#77877A" stroke-width="2">
+    <path d="M444 376H492C516 376 534 394 534 420V505H590"/>
+    <path d="M444 634H492C516 634 534 616 534 590V505"/>
+    <path d="M1030 505H1102V376H1175"/>
+    <path d="M1102 505V634H1175"/>
+  </g>
+  <g fill="#CFFF04" stroke="#26302B" stroke-width="2">
+    <rect x="526" y="497" width="16" height="16"/>
+    <rect x="1094" y="497" width="16" height="16"/>
+  </g>
+  <g fill="#26302B" font-family="Geist Mono, monospace" font-size="13" letter-spacing="1.1">
+    <text x="64" y="245">01  WORKING PROTOTYPES</text>
+    <text x="590" y="245">02  INSPECTABLE CHOICES</text>
+    <text x="1175" y="245">03  VERIFIABLE ROUTES</text>
+  </g>
+
+  <!-- Prototype A: a calm, content-first composition. -->
+  <rect x="64" y="262" width="380" height="228" fill="#E7F0E9" stroke="#26302B" stroke-width="2"/>
+  <g clip-path="url(#prototype-a-clip)">
+    <rect x="64" y="262" width="380" height="36" fill="#19372D"/>
+    <text x="81" y="286" fill="#F8F7F2" font-family="Geist Mono, monospace" font-size="12" letter-spacing="1">A  /  FIELD NOTES</text>
+    <circle cx="410" cy="280" r="4" fill="#CFFF04"/>
+    <path d="M82 327H426" stroke="#9AAC9F"/>
+    <rect x="82" y="349" width="90" height="6" fill="#94A99B"/>
+    <text x="80" y="413" fill="#19372D" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="51" font-weight="500" letter-spacing="-3">A clearer</text>
+    <text x="80" y="460" fill="#19372D" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="51" font-weight="500" letter-spacing="-3">starting point.</text>
+    <path d="M362 328V370M341 349H383" stroke="#19372D" stroke-width="1.5"/>
+    <rect x="376" y="442" width="50" height="30" fill="#CFFF04"/>
+    <path d="M387 457H415M408 450L415 457L408 464" fill="none" stroke="#19372D" stroke-width="1.5"/>
+  </g>
+
+  <!-- Prototype B: a denser, dark composition using the same content. -->
+  <rect x="64" y="520" width="380" height="228" fill="#1B2926" stroke="#26302B" stroke-width="2"/>
+  <g clip-path="url(#prototype-b-clip)">
+    <path d="M82 554H426M82 702H426" stroke="#6A7D71" stroke-width="1.5"/>
+    <text x="82" y="543" fill="#CFFF04" font-family="Geist Mono, monospace" font-size="12" letter-spacing="1">B  /  FIELD NOTES</text>
+    <text x="82" y="599" fill="#F8F7F2" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="40" font-weight="500" letter-spacing="-2.8">A clearer</text>
+    <text x="82" y="637" fill="#F8F7F2" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="40" font-weight="500" letter-spacing="-2.8">starting point.</text>
+    <rect x="82" y="655" width="204" height="5" fill="#8DA398"/>
+    <rect x="82" y="669" width="158" height="5" fill="#8DA398"/>
+    <path d="M325 608L431 555M343 642L431 597" stroke="#CFFF04" stroke-width="26"/>
+    <path d="M82 723H169M179 723H226" stroke="#8DA398" stroke-width="3"/>
+    <rect x="383" y="710" width="43" height="21" fill="#CFFF04"/>
+  </g>
+
+  <!-- Four explicit choices form the central visual hinge. -->
+  <rect x="590" y="262" width="440" height="486" fill="#F8F7F2" stroke="#26302B" stroke-width="2"/>
+  <rect x="590" y="262" width="440" height="48" fill="#26302B"/>
+  <text x="611" y="292" fill="#F8F7F2" font-family="Geist Mono, monospace" font-size="14" letter-spacing="1.3">DECISION MATRIX</text>
+  <text x="1009" y="292" text-anchor="end" fill="#CFFF04" font-family="Geist Mono, monospace" font-size="14">04 / 04</text>
+  <path d="M810 310V702M590 506H1030M590 702H1030" stroke="#B4B9AE" stroke-width="1.5"/>
+
+  <g fill="#26302B" font-family="Geist Mono, monospace" font-size="15" letter-spacing="1">
+    <text x="612" y="345">01 / COLOR</text>
+    <text x="832" y="345">02 / TYPE</text>
+    <text x="612" y="540">03 / RADIUS</text>
+    <text x="832" y="540">04 / DENSITY</text>
+  </g>
+
+  <rect x="612" y="380" width="78" height="78" fill="#CFFF04" stroke="#26302B" stroke-width="1.5"/>
+  <rect x="700" y="380" width="40" height="78" fill="#26302B"/>
+  <rect x="750" y="380" width="38" height="78" fill="#F8F7F2" stroke="#26302B" stroke-width="1.5"/>
+  <text x="612" y="483" fill="#657166" font-family="Geist Mono, monospace" font-size="11">SIGNAL  /  SURFACE  /  INK</text>
+
+  <text x="826" y="446" fill="#26302B" font-family="Geist, Helvetica Neue, Arial, sans-serif" font-size="95" font-weight="500" letter-spacing="-9">Aa</text>
+  <path d="M831 458H1008" stroke="#26302B" stroke-width="1.5"/>
+  <path d="M831 465V458M1008 465V458" stroke="#26302B" stroke-width="1.5"/>
+  <text x="832" y="484" fill="#657166" font-family="Geist Mono, monospace" font-size="11">GEIST  /  DISPLAY + MONO</text>
+
+  <rect x="612" y="573" width="90" height="90" fill="none" stroke="#26302B" stroke-width="2"/>
+  <path d="M612 614H702M657 573V663" stroke="#B4B9AE" stroke-width="1.5"/>
+  <rect x="719" y="573" width="70" height="90" fill="#26302B"/>
+  <path d="M737 591H771V645H737Z" fill="none" stroke="#CFFF04" stroke-width="2"/>
+  <text x="612" y="687" fill="#657166" font-family="Geist Mono, monospace" font-size="11">PRECISE EDGES  /  02 PX</text>
+
+  <g fill="#26302B">
+    <rect x="832" y="576" width="20" height="20"/>
+    <rect x="861" y="580" width="145" height="4"/>
+    <rect x="861" y="590" width="100" height="3" fill="#9CA79C"/>
+    <rect x="832" y="610" width="20" height="20"/>
+    <rect x="861" y="614" width="145" height="4"/>
+    <rect x="861" y="624" width="119" height="3" fill="#9CA79C"/>
+    <rect x="832" y="644" width="20" height="20"/>
+    <rect x="861" y="648" width="145" height="4"/>
+    <rect x="861" y="658" width="81" height="3" fill="#9CA79C"/>
+  </g>
+  <text x="832" y="687" fill="#657166" font-family="Geist Mono, monospace" font-size="11">ROOM TO SCAN  /  SPACE TO READ</text>
+
+  <rect x="590" y="702" width="440" height="46" fill="#E8EAE1"/>
+  <text x="612" y="730" fill="#26302B" font-family="Geist Mono, monospace" font-size="13" letter-spacing=".7">INSPECT  →  CHOOSE  →  REPEAT</text>
+  <rect x="984" y="714" width="30" height="20" fill="#CFFF04"/>
+  <path d="M991 724H1007M1001 718L1007 724L1001 730" fill="none" stroke="#26302B" stroke-width="1.5"/>
+
+  <!-- The outcomes look like actual routes with lightweight page previews. -->
+  <rect x="1175" y="262" width="361" height="228" fill="#FFFFFF" stroke="#26302B" stroke-width="2"/>
+  <rect x="1175" y="262" width="361" height="38" fill="#E8EAE1"/>
+  <circle cx="1194" cy="281" r="4" fill="#26302B"/>
+  <circle cx="1209" cy="281" r="4" fill="#AAB3A5"/>
+  <text x="1224" y="286" fill="#26302B" font-family="Geist Mono, monospace" font-size="12">/showcase/journal-retrofit</text>
+  <rect x="1469" y="270" width="54" height="22" fill="#CFFF04"/>
+  <text x="1496" y="285" text-anchor="middle" fill="#26302B" font-family="Geist Mono, monospace" font-size="11">LIVE</text>
+  <path d="M1192 318H1518" stroke="#C2C8BD"/>
+  <rect x="1192" y="333" width="128" height="10" fill="#26302B"/>
+  <rect x="1192" y="359" width="237" height="34" fill="#26302B"/>
+  <rect x="1192" y="404" width="186" height="6" fill="#9CA79C"/>
+  <rect x="1192" y="418" width="218" height="6" fill="#9CA79C"/>
+  <rect x="1192" y="446" width="90" height="25" fill="#CFFF04"/>
+  <path d="M1478 331L1517 370L1478 409L1439 370Z" fill="none" stroke="#26302B" stroke-width="2"/>
+  <path d="M1482 346L1501 370L1482 394" fill="none" stroke="#26302B" stroke-width="2"/>
+
+  <rect x="1175" y="520" width="361" height="228" fill="#23312B" stroke="#26302B" stroke-width="2"/>
+  <rect x="1175" y="520" width="361" height="38" fill="#19251F"/>
+  <circle cx="1194" cy="539" r="4" fill="#CFFF04"/>
+  <circle cx="1209" cy="539" r="4" fill="#698072"/>
+  <text x="1224" y="544" fill="#F8F7F2" font-family="Geist Mono, monospace" font-size="12">/showcase/ship-onwards</text>
+  <rect x="1469" y="528" width="54" height="22" fill="#CFFF04"/>
+  <text x="1496" y="543" text-anchor="middle" fill="#26302B" font-family="Geist Mono, monospace" font-size="11">LIVE</text>
+  <path d="M1192 576H1518" stroke="#687B6E"/>
+  <rect x="1192" y="591" width="126" height="10" fill="#CFFF04"/>
+  <rect x="1192" y="619" width="235" height="33" fill="#F8F7F2"/>
+  <rect x="1192" y="665" width="200" height="6" fill="#81978A"/>
+  <rect x="1192" y="679" width="174" height="6" fill="#81978A"/>
+  <rect x="1192" y="707" width="90" height="25" fill="#CFFF04"/>
+  <path d="M1458 620H1517V678H1458Z" fill="none" stroke="#CFFF04" stroke-width="2"/>
+  <path d="M1470 633H1505M1470 645H1497M1470 657H1503" stroke="#CFFF04" stroke-width="2"/>
+
+  <path d="M64 790H1536" stroke="#26302B" stroke-width="1.5"/>
+  <g fill="#26302B" font-family="Geist Mono, monospace" font-size="14" letter-spacing=".8">
+    <text x="64" y="823">THE WORK IS THE EVIDENCE.</text>
+    <text x="1536" y="823" text-anchor="end">SELECTED WORK  /  JAY'S LAB</text>
+  </g>
+  <path d="M64 845H1536" stroke="#AAB3A5"/>
+</svg>
